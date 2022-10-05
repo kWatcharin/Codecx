@@ -28,7 +28,7 @@ class Contributor(models.Model):
         verbose_name_plural = 'Contributors'
 
     def __str__(self):
-        return self.autor_title
+        return self.contributor_title
 
 
 # Artist's Profile Class.
@@ -55,9 +55,6 @@ class LanguagesLightnovel(models.Model):
 
     language_lightnovel = models.CharField(max_length=10, choices=languages_lightnovel_choices)
 
-    def __str__(self):
-       return self.language_lightnovel
-
 
 # Genres Profile.
 class LightnovelCategory(models.Model):
@@ -76,15 +73,15 @@ class LightnovelCategory(models.Model):
         ('ISEKAI', 'Isekai'), ('MAGICAL', 'Magical'),
     ]
     
-    lightnovel_1st_category = models.CharField(max_length=20, choices=lightnovel_category_choices,
+    lightnovel_1st_category = models.CharField(max_length=25, choices=lightnovel_category_choices,
                                 null=True, blank=True, default='N/A')
-    lightnovel_2nd_category = models.CharField(max_length=20, choices=lightnovel_category_choices,
+    lightnovel_2nd_category = models.CharField(max_length=25, choices=lightnovel_category_choices,
                                 null=True, blank=True)
-    lightnovel_3rd_category = models.CharField(max_length=20, choices=lightnovel_category_choices,
+    lightnovel_3rd_category = models.CharField(max_length=25, choices=lightnovel_category_choices,
                                 null=True, blank=True)
-    lightnovel_4th_category = models.CharField(max_length=20, choices=lightnovel_category_choices, 
-                                null=True, black=True)
-    lightnovel_5th_category = models.CharField(max_length=20, choices=lightnovel_category_choices,
+    lightnovel_4th_category = models.CharField(max_length=25, choices=lightnovel_category_choices, 
+                                null=True, blank=True)
+    lightnovel_5th_category = models.CharField(max_length=25, choices=lightnovel_category_choices,
                                 null=True, blank=True)
 
     class meta:
@@ -109,21 +106,23 @@ class Lightnovel(models.Model):
 
     lightnovel_title_eng = models.CharField(max_length=200, help_text="The title of the book in english.", db_index=True)
     lightnovel_title_jp = models.CharField(max_length=200, help_text="The title of the book in japanese.", db_index=True)
-    contributor = models.ForeignKey(Contributor, relate_name='contributor', on_delete=models.CASCADE)
-    artist = models.ForeignKey(Artist, relate_name='artist', on_delete=models.CASCADE)
-    isbn_number = models.CharField(max_lenght=20, unique=True, db_index=True, verbose_name="ISBN numbers of the book.")
+    contributor = models.ForeignKey(Contributor, on_delete=models.CASCADE)
+    artist = models.ForeignKey(Artist, on_delete=models.CASCADE)
+    isbn_number = models.CharField(max_length=20, unique=True, db_index=True, verbose_name="ISBN numbers of the book.")
     year = models.CharField(max_length=5, help_text="The first years of lightnovel that was published.")
-    publisher = models.ForeignKey(Publisher, relate_name='publisher', on_delete=models.CASCADE)
-    lightnovel_category = models.ForeignKey(LightnovelCategory)
+    publisher = models.ForeignKey(Publisher, on_delete=models.CASCADE)
+    lightnovel_category = models.ForeignKey(LightnovelCategory, on_delete=models.CASCADE)
     Lightnovel_description = models.TextField(null=True, blank=True)
     slug = models.SlugField(max_length=255, unique=True)
     pages = models.IntegerField(help_text="The book's page.")
     image = models.ImageField('/image')
     stock_volume = models.IntegerField(help_text="The stock of the lightnovel.")
     stock_status_now = models.ForeignKey(StockStatus, help_text="The status of the stock.", on_delete=models.CASCADE)
-    datetime_stock = models.DateTimeField(auto_add_now=True)
-    premium_price = models.DecimalField(help_text="The premium price of the lightnovel.", null=True, black=True)
-    normal_price = models.DecimalField(help_text="The normal price of the lightnovel.", null=True, blank=True)
+    datetime_stock = models.DateTimeField()
+    premium_price = models.DecimalField(max_digits=6, decimal_places=2, 
+                        help_text="The premium price of the lightnovel.", null=True, blank=True)
+    normal_price = models.DecimalField(max_digits=6, decimal_places=2, 
+                        help_text="The normal price of the lightnovel.", null=True, blank=True)
     language_lightnovel = models.ForeignKey(LanguagesLightnovel, on_delete=models.CASCADE)
 
     class meta:
