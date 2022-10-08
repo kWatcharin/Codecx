@@ -99,7 +99,7 @@ class LightnovelCategory(models.Model):
 
     def __str__(self):
         return f"""
-        {self.lightnovel_tag_label}.title(),
+        {self.lightnovel_tag_label},
         {self.lightnovel_1st_category}, 
         {self.lightnovel_2nd_category}, 
         {self.lightnovel_3rd_category}, 
@@ -146,7 +146,7 @@ class Lightnovel(models.Model):
     slug = models.SlugField(max_length=255, unique=True, null=True, blank=True)
     pages = models.CharField(max_length=4, help_text="The book's page.",
         null=True, blank=True)
-    image = models.ImageField('/image', help_text="For the image.",
+    image = models.ImageField('media/store_app/image', help_text="For the image.",
         null=True, blank=True)
     volume_no = models.CharField(max_length=3, help_text="The volume's number of the lightnovel.",
         null=True, blank=True)
@@ -173,6 +173,7 @@ class Lightnovel(models.Model):
         {self.lightnovel_title_jp},
         {self.contributor},
         {self.artist},
+        {self.volume_no},
         """
     
 
