@@ -1,0 +1,73 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'store_app/bootstrap-5.0.2-dist/css/bootstrap.min.css' %}">
+<script src="{% static 'store_app/bootstrap-5.0.2-dist/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'store_app/bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js' %}"></script>
+<link rel="stylesheet" href="{% static 'store_app/bootstrap-5.0.2-dist/icons/house.svg' %}">
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Mitr:wght@300&family=Permanent+Marker&family=Righteous&display=swap');
+    .brand_logo{
+        font-family: 'Permanent Marker', cursive;
+        background: linear-gradient(90deg, #00FFD1, #D58BDD);
+        font-size: 30px;
+        background-clip: initial;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    @import url('https://fonts.googleapis.com/css2?family=Mitr:wght@300&family=Righteous&display=swap');
+    .button_nav_elements{
+        font-family: 'Mitr', sans-serif;
+    }
+
+    .search_element{
+        font-family:  'Mitr', sans-serif;
+        background: linear-gradient(90deg, #D58BDD, #FFD1D1);
+    }
+
+    .sign_in_element{
+        font-family: 'Mitr', sans-serif;
+        background: linear-gradient(90deg, #00FFD1, #CFFF8D);
+    }
+</style>
+
+
+<header>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+        <div class="container">
+            <a href="index.html" class="navbar-brand ">
+                <h1 class="brand_logo">CODECX</h1>
+            </a>
+            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar1">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div id="navbar1" class="collapse navbar-collapse">
+                <ul class="navbar-nav ms-auto button_nav_elements">
+                    <li class="nav-item">
+                        <a href="#home" class="nav-link text-white">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#books" class="nav-link text-white">Books</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <form class="d-flex">
+                            <input class="form-control me-2 button_nav_elements" type="text" placeholder="Search">
+                            <button class="search_element btn btn-primary" type="button">Search</button>
+                        </form>
+                    </li>
+
+                    <li class="nav-item">
+                        <button href="#sign-in" class="sign_in_element btn btn-danger button_nav_elements" type="button">Sign-in</button>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#about" class="nav-link text-white">About us</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>

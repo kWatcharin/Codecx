@@ -5,15 +5,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'store_app/bootstrap-5.0.2-dist/css/Bootstrap.min.css' %}">
-    <script src="{% static 'store_app/bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js' %}"></script>
-    <title> Store {% block title %}{% endblock %} </title>
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'store_app/bootstrap-5.0.2-dist/css/bootstrap.min.css' %}">
+    <script src="{% static 'store_app/bootstrap-5.0.2-dist/js/bootstrap.min.js' %}"></script>
 </head>
 <body>
-    {% include 'store_app/components/store_app_header.html' %}
-    <div id="content_base">
-        {% block content_base %}{% endblock %}
-    </div>
-    {% include 'store_app/components/store_app_footer.html' %}
+    {% include 'store_app/components/store_app_site_header.html' %}
+    {% block content %}{% endblock %}
+    {% include 'store_app/components/store_app_site_footer.html' %}
 </body>
 </html>
