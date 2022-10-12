@@ -1,14 +1,12 @@
 {% load static %}
-
 <link rel="stylesheet" href="{% static 'store_app/bootstrap-5.0.2-dist/css/bootstrap.min.css' %}">
 <script src="{% static 'store_app/bootstrap-5.0.2-dist/js/bootstrap.min.js' %}"></script>
 <script src="{% static 'store_app/bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js' %}"></script>
-<link rel="stylesheet" href="{% static 'store_app/bootstrap-5.0.2-dist/icons/house.svg' %}">
 
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Mitr:wght@300&family=Permanent+Marker&family=Righteous&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
     .brand_logo{
-        font-family: 'Permanent Marker', cursive;
+        font-family: 'Fredoka One', cursive;
         background: linear-gradient(90deg, #00FFD1, #D58BDD);
         font-size: 30px;
         background-clip: initial;
@@ -23,7 +21,7 @@
 
     .search_element{
         font-family:  'Mitr', sans-serif;
-        background: linear-gradient(90deg, #D58BDD, #FFD1D1);
+        background: linear-gradient(90deg, #D58BDD, #FFA1CF);
     }
 
     .sign_in_element{
@@ -34,9 +32,9 @@
 
 
 <header>
-    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-        <div class="container">
-            <a href="index.html" class="navbar-brand ">
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+            <a href="#codecx" class="navbar-brand ">
                 <h1 class="brand_logo">CODECX</h1>
             </a>
             <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar1">
@@ -49,18 +47,22 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="#books" class="nav-link text-white">Books</a>
+                        <a href="#books" class="nav-link text-white">All Lightnovels</a>
                     </li>
 
-                    <li class="nav-item">
+                    <li class="nav-item ml-10">
                         <form class="d-flex">
                             <input class="form-control me-2 button_nav_elements" type="text" placeholder="Search">
-                            <button class="search_element btn btn-primary" type="button">Search</button>
+                            <button class="search_element btn btn-primary text-white" type="button">Search</button>
                         </form>
                     </li>
 
                     <li class="nav-item">
-                        <button href="#sign-in" class="sign_in_element btn btn-danger button_nav_elements" type="button">Sign-in</button>
+                        <button href="#sign-in" class="sign_in_element btn button_nav_elements text-white" type="button">Sign-in</button>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#sign_up" class="nav-link text-white">Sign-Up</a>
                     </li>
 
                     <li class="nav-item">
