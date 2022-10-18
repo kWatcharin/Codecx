@@ -1,11 +1,10 @@
 from django.contrib import admin
-from store_app.models import Publisher, Contributor, Artist, LanguagesLightnovel
-from store_app.models import StockStatus, LightnovelCategory, Lightnovel
+from store_app.models import Publisher, Contributor, Artist, BookLanguage
+from store_app.models import StockStatus, BookCategory, Book
 
-# Register your models here.
 
 class PublisherAdmin(admin.ModelAdmin):
-    """A class for admin's publisher."""
+    """A model admin for admin's publisher."""
 
     publisher_admin = (
         'publisher_title',
@@ -36,29 +35,29 @@ class ArtistAdmin(admin.ModelAdmin):
 admin.site.register(Artist, ArtistAdmin)
 
 
-class LanguageLightnovelAdmin(admin.ModelAdmin):
-    """A class for admin's language lightnovel."""
+class BookLanguageAdmin(admin.ModelAdmin):
+    """A class for admin's language of book."""
 
-    language_lightnovel_admin = (
-        'language_lightnovel_select',
+    book_language_admin = (
+        'book_language_select',
     )
 
-admin.site.register(LanguagesLightnovel, LanguageLightnovelAdmin)
+admin.site.register(BookLanguage, BookLanguageAdmin)
 
 
-class LightnovelCategoryAdmin(admin.ModelAdmin):
-    """A class for admin's lightnovel category."""
+class BookCategoryAdmin(admin.ModelAdmin):
+    """A class for admin's category of the book."""
 
     lightnovel_category_admin = (
-        'lightnovel_1st_category',
-        'lightnovel_2nd_category',
-        'lightnovel_3rd_category',
-        'lightnovel_4th_category',
-        'lightnovel_5th_category',
-        'lightnovel_tag_label'
+        'book_category_tag_label',
+        'book_category_tag_1st',
+        'book_category_tag_2st',
+        'book_category_tag_3st',
+        'book_category_tag_4st',
+        'book_category_tag_5st',
         )
 
-admin.site.register(LightnovelCategory, LightnovelCategoryAdmin)
+admin.site.register(BookCategory, BookCategoryAdmin)
 
 
 class StockStatusAdmin(admin.ModelAdmin):
@@ -70,16 +69,17 @@ class StockStatusAdmin(admin.ModelAdmin):
 
 admin.site.register(StockStatus, StockStatusAdmin)
 
-class LightnovelAdmin(admin.ModelAdmin):
-    """A class for admin's book."""
+class BookAdmin(admin.ModelAdmin):
+    """A class for admin's book(lightnovel)."""
 
     book_admin_display_list = (
         'image'
-        'lightnovel_title_eng', 
-        'lightnovel_title_jp',
+        'book_title_eng', 
+        'book_title_jp',
         'volume_no'
         'contributor',
-        'artist'
+        'artist',
+        'book_categories'
     )
 
-admin.site.register(Lightnovel, LightnovelAdmin)
+admin.site.register(Book, BookAdmin)

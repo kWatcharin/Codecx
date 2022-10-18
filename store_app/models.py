@@ -1,12 +1,10 @@
 from django.db import models
 
 
-# Create your models here.
-
 class Publisher(models.Model):
-    """A publisher that published the lightnovel."""
+    """The model for publisher that published the book(lightnovel)."""
 
-    publisher_title = models.CharField(max_length=20, help_text="The name of the publisher.", 
+    publisher_title = models.CharField(max_length=30, help_text="The publisher's name.", 
         null=True, blank=True)
     website = models.URLField(help_text="The publisher's website.",
         null=True, blank=True)
@@ -21,9 +19,9 @@ class Publisher(models.Model):
 
 
 class Contributor(models.Model):
-    """A contributor that wrote the lightnovel."""
+    """The model for the contributor that wrote the book(lightnovel)."""
 
-    contributor_title = models.CharField(max_length=20, help_text="The title of the author.",
+    contributor_title = models.CharField(max_length=30, help_text="The contributor's name.",
         null=True, blank=True)
 
     class meta:
@@ -36,7 +34,7 @@ class Contributor(models.Model):
 class Artist(models.Model):
     """The artist that illustrated the illustration of the lightnovel."""
 
-    artist_title = models.CharField(max_length=40, help_text="The artist's title.",
+    artist_title = models.CharField(max_length=40, help_text="The artist's name.",
         null=True, blank=True)
 
     class meta:
@@ -46,28 +44,27 @@ class Artist(models.Model):
         return f"{self.artist_title}"
 
 
-class LanguagesLightnovel(models.Model):
-    """for the language of the lightnovel selection."""
+class BookLanguage(models.Model):
+    """The language for the book."""
 
-    languages_lightnovel_choices = [
+    book_language_choices = [
         ("ENGLISH" ,"English"),
         ("JAPANESE", "Japanese"),
     ]
 
-    language_lightnovel_select = models.CharField(max_length=10, choices=languages_lightnovel_choices,
-        default='ENGLISH')
+    book_language_select = models.CharField(max_length=10, choices=book_language_choices)
 
     class meta:
-        verbose_name_plural = 'LanguageLightnovels'
+        verbose_name_plural = 'BookLanguages'
 
     def __str__(self):
-        return f"{self.language_lightnovel_select}"
+        return f"{self.book_language_select}"
 
 
-class LightnovelCategory(models.Model):
-    """for category of the ightnovel selection."""
+class BookCategory(models.Model):
+    """The model for the book's category."""
 
-    lightnovel_category_choices = [('N/A', 'n/a'),
+    book_category_choices = [('N/A', 'n/a'),
         ('ACTION', 'Action'), ('DRAMA', 'Drama'), ('ADVENTURE', 'Adventure'), 
         ('COMEDY', 'Comedy'), ('DRAMA', 'Drama'), ('ECCHI', 'Ecchi'), 
         ('FANTASY', 'Fantasy'), ('GENDER BENDER', 'Gender Bender'), ('HAREM', 'Harem'), 
@@ -79,37 +76,37 @@ class LightnovelCategory(models.Model):
         ('SPORT', 'Sport'), ('TRAGEDY', 'Tragedy'), ('YAOI', 'Yaoi'), ('YURI', 'Yuri'), 
         ('ISEKAI', 'Isekai'), ('MAGICAL', 'Magical'),
     ]
+    
+    book_category_tag_label = models.CharField(max_length=200, help_text="The book(lightnovel)'s tage label.",
+        null=True, blank=True)
 
-    lightnovel_1st_category = models.CharField(max_length=25, choices=lightnovel_category_choices,
+    book_category_tag_1st = models.CharField(max_length=25, choices=book_category_choices,
         null=True, blank=True, default='N/A')
-    lightnovel_2nd_category = models.CharField(max_length=25, choices=lightnovel_category_choices,
-        null=True, blank=True)
-    lightnovel_3rd_category = models.CharField(max_length=25, choices=lightnovel_category_choices,
-        null=True, blank=True)
-    lightnovel_4th_category = models.CharField(max_length=25, choices=lightnovel_category_choices, 
-        null=True, blank=True)
-    lightnovel_5th_category = models.CharField(max_length=25, choices=lightnovel_category_choices,
-        null=True, blank=True)
-
-    lightnovel_tag_label = models.CharField(max_length=255, help_text="For the lightnovel short detail.",
-        null=True, blank=True)
-
+    book_category_tag_2st = models.CharField(max_length=25, choices=book_category_choices,
+        null=True, blank=True, default='N/A')
+    book_category_tag_3st = models.CharField(max_length=25, choices=book_category_choices,
+        null=True, blank=True, default='N/A')
+    book_category_tag_4st = models.CharField(max_length=25, choices=book_category_choices,
+        null=True, blank=True, default='N/A')
+    book_category_tag_5st = models.CharField(max_length=25, choices=book_category_choices,
+        null=True, blank=True, default='N/A')
+    
     class meta:
-        verbose_name_plural = 'Lightnovelcategories'
+        verbose_name_plural = 'BookCategories'
 
     def __str__(self):
         return f"""
-        {self.lightnovel_tag_label},
-        {self.lightnovel_1st_category}, 
-        {self.lightnovel_2nd_category}, 
-        {self.lightnovel_3rd_category}, 
-        {self.lightnovel_4th_category}, 
-        {self.lightnovel_5th_category},
-        """
+            {self.book_category_tag_label},
+            {self.book_category_tag_1st},
+            {self.book_category_tag_2st},
+            {self.book_category_tag_3st},
+            {self.book_category_tag_4st},
+            {self.book_category_tag_5st},
+            """
 
 
 class StockStatus(models.Model):
-    """An attribute that is status of the stock."""
+    """The model for stock status checker."""
    
     stock_status_choices = [
         ('IN STOCK', 'In stock'),
@@ -122,58 +119,57 @@ class StockStatus(models.Model):
     def __str__(self):
         return f"{self.stock_status}"
 
-class Lightnovel(models.Model):
-    """A ligtnovel profile."""
+class Book(models.Model):
+    """The model for the book(lightnovel) details."""
 
-    lightnovel_title_eng = models.CharField(max_length=200, help_text="The title of the book in english.", 
+    book_title_eng = models.CharField(max_length=200, help_text="The book's name in English.", 
         db_index=True, null=True, blank=True)
-    lightnovel_title_jp = models.CharField(max_length=200, help_text="The title of the book in japanese.",
+    book_title_jp = models.CharField(max_length=200, help_text="The book's name in Japanese(Romaji).",
         db_index=True, null=True, blank=True)
     contributor = models.ForeignKey(Contributor, on_delete=models.CASCADE,
-        null=True, blank=True, help_text="The contributor of the lightnovel.")
+        null=True, blank=True, help_text="The contributor of the book(lightnovel).")
     artist = models.ForeignKey(Artist, on_delete=models.CASCADE,
-        null=True, blank=True, help_text="The artist of the lightnovel.")
-    isbn_number = models.CharField(max_length=20, unique=True, db_index=True,
+        null=True, blank=True, help_text="The artist of the book(lightnovel).")
+    isbn = models.CharField(max_length=20, unique=True, db_index=True,
         verbose_name="ISBN numbers of the book.", null=True, blank=True)
-    year = models.CharField(max_length=4, help_text="The first year of lightnovel that was published.",
+    year = models.CharField(max_length=4, help_text="The first year of (book)lightnovel that was published.",
         null=True, blank=True)
     publisher = models.ForeignKey(Publisher, on_delete=models.CASCADE,
         null=True, blank=True)
-    lightnovel_category = models.ForeignKey(LightnovelCategory, on_delete=models.CASCADE,
-        null=True, blank=True)
-    Lightnovel_description = models.TextField(help_text="For the lightnovel's description.", 
+    book_categories = models.ForeignKey(BookCategory, on_delete=models.CASCADE,
         null=True, blank=True)
     slug = models.SlugField(max_length=255, unique=True, null=True, blank=True)
-    pages = models.CharField(max_length=4, help_text="The book's page.",
+    pages = models.CharField(max_length=4, help_text="The book(lightnovel)'s page.",
         null=True, blank=True)
-    image = models.ImageField('media/store_app/image', help_text="For the image.",
+    image = models.ImageField('/store_app/image', help_text="For the book(lightnovel)'s image.",
         null=True, blank=True)
-    volume_no = models.CharField(max_length=3, help_text="The volume's number of the lightnovel.",
+    volume_no = models.CharField(max_length=3, help_text="The volume's number of the (book)lightnovel.",
         null=True, blank=True)
-    stock_volume = models.IntegerField(help_text="The stock of the lightnovel in the warehouse.",
+    stock_volume = models.IntegerField(help_text="The stock of the (book)lightnovel in the warehouse.",
         null=True, blank=True)
     stock_status_now = models.ForeignKey(StockStatus, help_text="The status of the stock.", on_delete=models.CASCADE)
-    datetime_stock = models.DateTimeField()
+    datetime_create = models.DateTimeField()
     premium_price = models.DecimalField(max_digits=6, decimal_places=2, 
-                        help_text="The premium price of the lightnovel.", 
+                        help_text="The premium price of the (book)lightnovel.", 
                         null=True, blank=True)
     normal_price = models.DecimalField(max_digits=6, decimal_places=2, 
-                        help_text="The normal price of the lightnovel.", 
+                        help_text="The normal price of the (book)lightnovel.", 
                         null=True, blank=True)
-    language_lightnovel = models.ForeignKey(LanguagesLightnovel, on_delete=models.CASCADE,
-        help_text="The language of the lightnovel.")
+    book_language = models.ForeignKey(BookLanguage, on_delete=models.CASCADE,
+        help_text="The book(lightnovel)'s language", null=True, blank=True)
 
     class meta:
-        verbose_name_plural = 'Lightnovels'
+        verbose_name_plural = 'Books'
         ordering = ['-datetime_stock']
 
     def __str__(self):
         return f"""
-        {self.lightnovel_title_eng},
-        {self.lightnovel_title_jp},
+        {self.book_title_eng},
+        {self.book_title_jp},
         {self.contributor},
         {self.artist},
         {self.volume_no},
+        {self.book_categories}
         """
     
 
