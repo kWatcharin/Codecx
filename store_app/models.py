@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.urls import reverse
 
 class Publisher(models.Model):
     """The model for publisher that published the book(lightnovel)."""
@@ -161,6 +161,9 @@ class Book(models.Model):
     class meta:
         verbose_name_plural = 'Books'
         ordering = ['-datetime_stock']
+
+    def get_absolute_url(self):
+        return reverse('book_detail', kwargs=[str(self.slug)])
 
     def __str__(self):
         return f"""

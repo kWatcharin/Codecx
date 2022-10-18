@@ -34,7 +34,7 @@
 <header>
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
         <div class="container-fluid">
-            <a href="#codecx" class="navbar-brand ">
+            <a href="{% url 'homepage' %}" class="navbar-brand ">
                 <h1 class="brand_logo">CODECX</h1>
             </a>
             <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar1">
@@ -43,11 +43,11 @@
             <div id="navbar1" class="collapse navbar-collapse">
                 <ul class="navbar-nav ms-auto button_nav_elements">
                     <li class="nav-item">
-                        <a href="#home" class="nav-link text-white">Home</a>
+                        <a href="{% url 'homepage' %}" class="nav-link text-white">Home</a>
                     </li>
 
                     <li class="nav-item">
-                        <a href="#books" class="nav-link text-white">All Lightnovels</a>
+                        <a href="{% url 'books' %}" class="nav-link text-white">All Books</a>
                     </li>
 
                     <li class="nav-item ml-10">

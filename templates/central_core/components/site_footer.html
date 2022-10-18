@@ -1,0 +1,46 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'store_app/bootstrap-5.0.2-dist/css/bootstrap.min.css' %}">
+<script src="{% static 'store_app/bootstrap-5.0.2-dist/js/bootstrap.min.js' %}"></script>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Mitr:wght@300&family=Righteous&display=swap');
+    .container{
+        font-family: 'Mitr', sans-serif;
+    }
+
+    .footer_container{
+        margin-bottom: 0;
+        color: white;
+    }
+</style>
+
+
+<footer>
+    <div class="container-fluid bg-dark">
+        <div class="row">
+            <div class="col text-center">
+                <a href="{% url 'homepage' %}" class="text-white"><p>Home</p></a>
+            </div>
+            <div class="col text-center">
+                <a href="{% url 'books' %}" class="text-white">All Books</a>
+            </div>
+            <div class="col text-center">
+                <a href="#Sign-In" class="text-white">Sign-In</a>
+            </div>
+            <div class="col text-center">
+                <a href="#Sign-Up" class="text-white">Sign-Up</a>
+            </div>
+            <div class="col text-center">
+                <a href="#About Us" class="text-white">About Us</a>
+            </div>
+        </div>
+    </div>
+    <div class="contatiner-fluid bg-dark">
+        <div class="row">
+            <div class="col">
+                <h6 class="text-center text-white">2022 Copyright &copy; Codecx. All right reverse</h6>
+            </div>
+        </div>
+    </div>
+</footer>
+    
