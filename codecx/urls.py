@@ -18,14 +18,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+# The module for utilize the media files.
 from django.conf import settings
 from django.conf.urls.static import static
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('store_app.urls')),
+    path('', include('store_app.urls', namespace='store_app')),
+    path('', include('general_app.urls', namespace='general_app')),
 ]
 
-
+# For uitilize the media files.
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

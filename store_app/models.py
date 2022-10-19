@@ -2,7 +2,7 @@ from django.db import models
 from django.urls import reverse
 
 class Publisher(models.Model):
-    """The model for publisher that published the book(lightnovel)."""
+    """The model for the publisher that published the book(lightnovel)."""
 
     publisher_title = models.CharField(max_length=30, help_text="The publisher's name.", 
         null=True, blank=True)

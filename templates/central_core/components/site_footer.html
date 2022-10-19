@@ -19,10 +19,10 @@
     <div class="container-fluid bg-dark">
         <div class="row">
             <div class="col text-center">
-                <a href="{% url 'homepage' %}" class="text-white"><p>Home</p></a>
+                <a href="{% url 'store_app:homepage' %}" class="text-white"><p>Home</p></a>
             </div>
             <div class="col text-center">
-                <a href="{% url 'books' %}" class="text-white">All Books</a>
+                <a href="{% url 'store_app:books_list' %}" class="text-white">All Books</a>
             </div>
             <div class="col text-center">
                 <a href="#Sign-In" class="text-white">Sign-In</a>
@@ -31,7 +31,7 @@
                 <a href="#Sign-Up" class="text-white">Sign-Up</a>
             </div>
             <div class="col text-center">
-                <a href="#About Us" class="text-white">About Us</a>
+                <a href="{% url 'general_app:about_us' %}" class="text-white">About Us</a>
             </div>
         </div>
     </div>
