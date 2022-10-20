@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from store_app.models import Book, Publisher
 
 
@@ -25,8 +25,9 @@ def books_list(request):
     return render(request, 'store_app/books_list.html')
 
 
-def book_detail(request):
-    return render(request, 'store_app/book_detail.html')
+def book_detail(request, slug):
+    book = get_object_or_404(Book, slug=slug)
+    return render(request, 'store_app/books_list.html')
 
 
 
