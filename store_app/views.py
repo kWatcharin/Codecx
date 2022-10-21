@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from store_app.models import Book, Publisher
+from store_app.models import Book, Publisher, BookCategory
 
 
 
@@ -18,7 +18,8 @@ def books(request):
 
 
 def homepage(request):
-    return render(request, 'store_app/homepage.html')
+    book_categories = BookCategory.objects.all()
+    return render(request, 'store_app/homepage.html', {'book_categories': book_categories})
 
 
 def books_list(request):
@@ -26,7 +27,7 @@ def books_list(request):
 
 
 def book_detail(request, slug):
-    book = get_object_or_404(Book, slug=slug)
+    books = get_object_or_404(Book, slug=slug)
     return render(request, 'store_app/books_list.html')
 
 

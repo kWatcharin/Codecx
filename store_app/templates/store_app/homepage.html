@@ -9,69 +9,210 @@
 
 
 {% block content %}
-<div class="container">
-    <div class="row py-lg-5">
-        <div class="alert col-lg-3 col-md-6 col-sm-12 alert-primary mx-auto text-dark">ฺBook1</div>
-        <div class="alert col-lg-3 col-md-6 col-sm-12 alert-danger mx-auto text-dark">ฺBook2</div>
-        <div class="alert col-lg-3 col-md-6 col-sm-12 alert-warning mx-auto text-dark">Book3</div>
-        <div class="alert col-lg-3 col-md-6 col-sm-12 alert-success mx-auto text-dark">Book4</div>
-    </div>
-    <div class="row py-lg-5">
-        <div class="alert col-lg-3 col-md-6 col-sm-12 alert-primary mx-auto text-dark">ฺBook1</div>
-        <div class="alert col-lg-3 col-md-6 col-sm-12 alert-danger mx-auto text-dark">ฺBook2</div>
-        <div class="alert col-lg-3 col-md-6 col-sm-12 alert-warning mx-auto text-dark">Book3</div>
-        <div class="alert col-lg-3 col-md-6 col-sm-12 alert-success mx-auto text-dark">Book4</div>
-    </div>
-    <div class="row py-lg-5">
-        <div class="alert col-lg-3 col-md-6 col-sm-12 alert-primary mx-auto text-dark">ฺBook1</div>
-        <div class="alert col-lg-3 col-md-6 col-sm-12 alert-danger mx-auto text-dark">ฺBook2</div>
-        <div class="alert col-lg-3 col-md-6 col-sm-12 alert-warning mx-auto text-dark">Book3</div>
-        <div class="alert col-lg-3 col-md-6 col-sm-12 alert-success mx-auto text-dark">Book4</div>
-    </div>
-    
-    <div class="row">
-        <div class="col-md-6">
-           <div class="col-md-12 alert alert-danger">
-              Some Content.. 
-           </div>
-        </div>
-        <div class="col-md-6">
-           <div class="col-md-12 alert alert-primary">
-              Some Second Content.. 
-           </div>
-        </div>
-        <div class="col-md-6">
-            <div class="col-md-12 alert alert-danger" style="max-width: 1000px; max-height: 100px;">
-               
-            </div>
-         </div>
-         <div class="col-md-6" >
-            <div class="col-md-12 alert alert-primary " style="max-width: 1000px; max-height: 100px;">
-               
-            </div>
+<div class="container-fluid">
+   <!--Warning Text-->
+   <div class="row py-3">
+      <div class="col-sm-md-lg-12">
+         <div class="col-lg1-2 px-py-5 alert alert-warning">
+            <p class="text-center text-danger" style="font-size: 20px;">เว็บไซต์นี้สร้างขึ้นเพื่อการศึกษาการใช้งาน ภาษา Python และ Django Framework เท่านั้น สินค้าและรายละเอียดต่างๆล้วนนำมาอ้างอิงอื่นเพื่อการศึกษา ไม่ได้มีการวางขายบนเว็บไซต์อยู่จริง</ย>
          </div>
       </div>
+   </div>
+
+   <div class="container">
+      <!--Slide Image-->
+   </div>
+   
+   <div class="container">
+      <!--แจ้งเตือนหนังสือใหม่-->
       <div class="row">
-        <div class="col-md-6">
-           <div class="col-md-12 alert alert-danger">
-              Some Content.. 
-           </div>
-        </div>
-        <div class="col-md-6">
-           <div class="col-md-12 alert alert-primary">
-              Some Second Content.. 
-           </div>
-        </div>
-        <div class="col-md-6">
-            <div class="col-md-12 alert alert-danger">
-               Some Content.. 
-            </div>
-         </div>
-         <div class="col-md-6">
-            <div class="col-md-12 alert alert-primary">
-               Some Second Content.. 
-            </div>
+         <div class="col-sm-md-lg-12 alert alert-success text-center text-success" style="font-size: 25px;">
+            มาใหม่ ประจำเดือน พฤศจิกายน 2022
          </div>
       </div>
+   </div>
+
+   <div class="container">
+      <div class="row">
+         <!--book card ranking top 8-->
+         <!--No.1 Book-->
+         <div class="col-sm-12 col-md-4 col-lg-3 alert alert-light mx-auto">
+            <div class="col-sm-md-lg-12 alert alert-light" style="box-shadow: 0px 0px 10px 15px rgba(0, 0, 0, 0.05);">
+               <div class="card">
+                  <img src="#" class="card-img-top" alt="book-image">
+                  <div class="card-body">
+                     <h5 class="card-title" style="color: #D58BDD;">Book1</h5>
+                     <p class="card-text text-dark">Lorem ipsum dolor sit amet.</p>
+                     <a href="#" class="btn btn-outline-success" style="width: 75px;height: 65px;">
+                        <h6 style="font-size: 12px;">
+                           รายละเอียด
+                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-ticket-detailed" viewBox="0 0 16 16">
+                              <path d="M4 5.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5Zm0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5ZM5 7a1 1 0 0 0 0 2h6a1 1 0 1 0 0-2H5Z"/>
+                              <path d="M0 4.5A1.5 1.5 0 0 1 1.5 3h13A1.5 1.5 0 0 1 16 4.5V6a.5.5 0 0 1-.5.5 1.5 1.5 0 0 0 0 3 .5.5 0 0 1 .5.5v1.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 11.5V10a.5.5 0 0 1 .5-.5 1.5 1.5 0 1 0 0-3A.5.5 0 0 1 0 6V4.5ZM1.5 4a.5.5 0 0 0-.5.5v1.05a2.5 2.5 0 0 1 0 4.9v1.05a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-1.05a2.5 2.5 0 0 1 0-4.9V4.5a.5.5 0 0 0-.5-.5h-13Z"/>
+                           </svg>
+                        </h6>
+                     </a>
+                  </div>
+               </div>
+            </div>
+         </div>
+
+         <!--No.2 Book-->
+         <div class="col-sm-12 col-md-4 col-lg-3 alert alert-light mx-auto">
+            <div class="col-sm-md-lg-12 alert alert-light" style="box-shadow: 0px 0px 10px 15px rgba(0, 0, 0, 0.05);">
+               <div class="card">
+                  <img src="#" class="card-img-top" alt="book-image">
+                  <div class="card-body">
+                     <h5 class="card-title" style="color: #D58BDD;">Book1</h5>
+                     <p class="card-text text-dark">Lorem ipsum dolor sit amet.</p>
+                     <a href="#" class="btn btn-outline-success" style="width: 75px;height: 65px;">
+                        <h6 style="font-size: 12px;">
+                           รายละเอียด
+                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-ticket-detailed" viewBox="0 0 16 16">
+                              <path d="M4 5.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5Zm0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5ZM5 7a1 1 0 0 0 0 2h6a1 1 0 1 0 0-2H5Z"/>
+                              <path d="M0 4.5A1.5 1.5 0 0 1 1.5 3h13A1.5 1.5 0 0 1 16 4.5V6a.5.5 0 0 1-.5.5 1.5 1.5 0 0 0 0 3 .5.5 0 0 1 .5.5v1.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 11.5V10a.5.5 0 0 1 .5-.5 1.5 1.5 0 1 0 0-3A.5.5 0 0 1 0 6V4.5ZM1.5 4a.5.5 0 0 0-.5.5v1.05a2.5 2.5 0 0 1 0 4.9v1.05a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-1.05a2.5 2.5 0 0 1 0-4.9V4.5a.5.5 0 0 0-.5-.5h-13Z"/>
+                           </svg>
+                        </h6>
+                     </a>
+                  </div>
+               </div>
+            </div>
+         </div>
+
+         <!--No.3 Book-->
+         <div class="col-sm-12 col-md-4 col-lg-3 alert alert-light mx-auto">
+            <div class="col-sm-md-lg-12 alert alert-light" style="box-shadow: 0px 0px 10px 15px rgba(0, 0, 0, 0.05);">
+               <div class="card">
+                  <img src="#" class="card-img-top" alt="book-image">
+                  <div class="card-body">
+                     <h5 class="card-title" style="color: #D58BDD;">Book1</h5>
+                     <p class="card-text text-dark">Lorem ipsum dolor sit amet.</p>
+                     <a href="#" class="btn btn-outline-success" style="width: 75px;height: 65px;">
+                        <h6 style="font-size: 12px;">
+                           รายละเอียด
+                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-ticket-detailed" viewBox="0 0 16 16">
+                              <path d="M4 5.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5Zm0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5ZM5 7a1 1 0 0 0 0 2h6a1 1 0 1 0 0-2H5Z"/>
+                              <path d="M0 4.5A1.5 1.5 0 0 1 1.5 3h13A1.5 1.5 0 0 1 16 4.5V6a.5.5 0 0 1-.5.5 1.5 1.5 0 0 0 0 3 .5.5 0 0 1 .5.5v1.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 11.5V10a.5.5 0 0 1 .5-.5 1.5 1.5 0 1 0 0-3A.5.5 0 0 1 0 6V4.5ZM1.5 4a.5.5 0 0 0-.5.5v1.05a2.5 2.5 0 0 1 0 4.9v1.05a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-1.05a2.5 2.5 0 0 1 0-4.9V4.5a.5.5 0 0 0-.5-.5h-13Z"/>
+                           </svg>
+                        </h6>
+                     </a>
+                  </div>
+               </div>
+            </div>
+         </div>
+
+         <!--No.4 Book-->
+         <div class="col-sm-12 col-md-4 col-lg-3 alert alert-light mx-auto">
+            <div class="col-sm-md-lg-12 alert alert-light" style="box-shadow: 0px 0px 10px 15px rgba(0, 0, 0, 0.05);">
+               <div class="card">
+                  <img src="#" class="card-img-top" alt="book-image">
+                  <div class="card-body">
+                     <h5 class="card-title" style="color: #D58BDD;">Book1</h5>
+                     <p class="card-text text-dark">Lorem ipsum dolor sit amet.</p>
+                     <a href="#" class="btn btn-outline-success" style="width: 75px;height: 65px;">
+                        <h6 style="font-size: 12px;">
+                           รายละเอียด
+                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-ticket-detailed" viewBox="0 0 16 16">
+                              <path d="M4 5.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5Zm0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5ZM5 7a1 1 0 0 0 0 2h6a1 1 0 1 0 0-2H5Z"/>
+                              <path d="M0 4.5A1.5 1.5 0 0 1 1.5 3h13A1.5 1.5 0 0 1 16 4.5V6a.5.5 0 0 1-.5.5 1.5 1.5 0 0 0 0 3 .5.5 0 0 1 .5.5v1.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 11.5V10a.5.5 0 0 1 .5-.5 1.5 1.5 0 1 0 0-3A.5.5 0 0 1 0 6V4.5ZM1.5 4a.5.5 0 0 0-.5.5v1.05a2.5 2.5 0 0 1 0 4.9v1.05a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-1.05a2.5 2.5 0 0 1 0-4.9V4.5a.5.5 0 0 0-.5-.5h-13Z"/>
+                           </svg>
+                        </h6>
+                     </a>
+                  </div>
+               </div>
+            </div>
+         </div>
+         
+         <!--No.5 Book-->
+         <div class="col-sm-12 col-md-4 col-lg-3 alert alert-light mx-auto">
+            <div class="col-sm-md-lg-12 alert alert-light" style="box-shadow: 0px 0px 10px 15px rgba(0, 0, 0, 0.05);">
+               <div class="card">
+                  <img src="#" class="card-img-top" alt="book-image">
+                  <div class="card-body">
+                     <h5 class="card-title" style="color: #D58BDD;">Book1</h5>
+                     <p class="card-text text-dark">Lorem ipsum dolor sit amet.</p>
+                     <a href="#" class="btn btn-outline-success" style="width: 75px;height: 65px;">
+                        <h6 style="font-size: 12px;">
+                           รายละเอียด
+                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-ticket-detailed" viewBox="0 0 16 16">
+                              <path d="M4 5.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5Zm0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5ZM5 7a1 1 0 0 0 0 2h6a1 1 0 1 0 0-2H5Z"/>
+                              <path d="M0 4.5A1.5 1.5 0 0 1 1.5 3h13A1.5 1.5 0 0 1 16 4.5V6a.5.5 0 0 1-.5.5 1.5 1.5 0 0 0 0 3 .5.5 0 0 1 .5.5v1.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 11.5V10a.5.5 0 0 1 .5-.5 1.5 1.5 0 1 0 0-3A.5.5 0 0 1 0 6V4.5ZM1.5 4a.5.5 0 0 0-.5.5v1.05a2.5 2.5 0 0 1 0 4.9v1.05a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-1.05a2.5 2.5 0 0 1 0-4.9V4.5a.5.5 0 0 0-.5-.5h-13Z"/>
+                           </svg>
+                        </h6>
+                     </a>
+                  </div>
+               </div>
+            </div>
+         </div>
+
+         <!--No.6 Book-->
+         <div class="col-sm-12 col-md-4 col-lg-3 alert alert-light mx-auto">
+            <div class="col-sm-md-lg-12 alert alert-light" style="box-shadow: 0px 0px 10px 15px rgba(0, 0, 0, 0.05);">
+               <div class="card">
+                  <img src="#" class="card-img-top" alt="book-image">
+                  <div class="card-body">
+                     <h5 class="card-title" style="color: #D58BDD;">Book1</h5>
+                     <p class="card-text text-dark">Lorem ipsum dolor sit amet.</p>
+                     <a href="#" class="btn btn-outline-success" style="width: 75px;height: 65px;">
+                        <h6 style="font-size: 12px;">
+                           รายละเอียด
+                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-ticket-detailed" viewBox="0 0 16 16">
+                              <path d="M4 5.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5Zm0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5ZM5 7a1 1 0 0 0 0 2h6a1 1 0 1 0 0-2H5Z"/>
+                              <path d="M0 4.5A1.5 1.5 0 0 1 1.5 3h13A1.5 1.5 0 0 1 16 4.5V6a.5.5 0 0 1-.5.5 1.5 1.5 0 0 0 0 3 .5.5 0 0 1 .5.5v1.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 11.5V10a.5.5 0 0 1 .5-.5 1.5 1.5 0 1 0 0-3A.5.5 0 0 1 0 6V4.5ZM1.5 4a.5.5 0 0 0-.5.5v1.05a2.5 2.5 0 0 1 0 4.9v1.05a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-1.05a2.5 2.5 0 0 1 0-4.9V4.5a.5.5 0 0 0-.5-.5h-13Z"/>
+                           </svg>
+                        </h6>
+                     </a>
+                  </div>
+               </div>
+            </div>
+         </div>
+         
+         <!--No.7 Book-->
+         <div class="col-sm-12 col-md-4 col-lg-3 alert alert-light mx-auto">
+            <div class="col-sm-md-lg-12 alert alert-light" style="box-shadow: 0px 0px 10px 15px rgba(0, 0, 0, 0.05);">
+               <div class="card">
+                  <img src="#" class="card-img-top" alt="book-image">
+                  <div class="card-body">
+                     <h5 class="card-title" style="color: #D58BDD;">Book1</h5>
+                     <p class="card-text text-dark">Lorem ipsum dolor sit amet.</p>
+                     <a href="#" class="btn btn-outline-success" style="width: 75px;height: 65px;">
+                        <h6 style="font-size: 12px;">
+                           รายละเอียด
+                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-ticket-detailed" viewBox="0 0 16 16">
+                              <path d="M4 5.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5Zm0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5ZM5 7a1 1 0 0 0 0 2h6a1 1 0 1 0 0-2H5Z"/>
+                              <path d="M0 4.5A1.5 1.5 0 0 1 1.5 3h13A1.5 1.5 0 0 1 16 4.5V6a.5.5 0 0 1-.5.5 1.5 1.5 0 0 0 0 3 .5.5 0 0 1 .5.5v1.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 11.5V10a.5.5 0 0 1 .5-.5 1.5 1.5 0 1 0 0-3A.5.5 0 0 1 0 6V4.5ZM1.5 4a.5.5 0 0 0-.5.5v1.05a2.5 2.5 0 0 1 0 4.9v1.05a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-1.05a2.5 2.5 0 0 1 0-4.9V4.5a.5.5 0 0 0-.5-.5h-13Z"/>
+                           </svg>
+                        </h6>
+                     </a>
+                  </div>
+               </div>
+            </div>
+         </div>
+
+         <!--No.8 Book-->
+         <div class="col-sm-12 col-md-4 col-lg-3 alert alert-light mx-auto">
+            <div class="col-sm-md-lg-12 alert alert-light" style="box-shadow: 0px 0px 10px 15px rgba(0, 0, 0, 0.05);">
+               <div class="card">
+                  <img src="#" class="card-img-top" alt="book-image">
+                  <div class="card-body">
+                     <h5 class="card-title" style="color: #D58BDD;">Book1</h5>
+                     <p class="card-text text-dark">Lorem ipsum dolor sit amet.</p>
+                     <a href="#" class="btn btn-outline-success" style="width: 75px;height: 65px;">
+                        <h6 style="font-size: 12px;">
+                           รายละเอียด
+                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-ticket-detailed" viewBox="0 0 16 16">
+                              <path d="M4 5.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5Zm0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5ZM5 7a1 1 0 0 0 0 2h6a1 1 0 1 0 0-2H5Z"/>
+                              <path d="M0 4.5A1.5 1.5 0 0 1 1.5 3h13A1.5 1.5 0 0 1 16 4.5V6a.5.5 0 0 1-.5.5 1.5 1.5 0 0 0 0 3 .5.5 0 0 1 .5.5v1.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 11.5V10a.5.5 0 0 1 .5-.5 1.5 1.5 0 1 0 0-3A.5.5 0 0 1 0 6V4.5ZM1.5 4a.5.5 0 0 0-.5.5v1.05a2.5 2.5 0 0 1 0 4.9v1.05a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-1.05a2.5 2.5 0 0 1 0-4.9V4.5a.5.5 0 0 0-.5-.5h-13Z"/>
+                           </svg>
+                        </h6>
+                     </a>
+                  </div>
+               </div>
+            </div>
+         </div>
+
+      </div>
+   </div>
+
 </div>
 {% endblock %}
