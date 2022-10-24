@@ -32,7 +32,7 @@ def books_list(request):
 
 def book_detail(request, slug):
     books = get_object_or_404(Book, slug=slug)
-    return render(request, 'store_app/book_detail.html')
+    return render(request, 'store_app/book_detail.html', {'books': books})
 
 
 

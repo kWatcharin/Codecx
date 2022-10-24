@@ -8,18 +8,117 @@
 {% block content %}
 <div class="container">
     <div class="row">
-        <div class="col-8 shadow px-5 py-5">
-            1
-        </div>
-        <div class="col-4 shadow px-5 py-5">
-            2
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-12 shadow px-5 py-5">
-            <div class="card">
-                <div class="card-body">
-                    <p>Lorem ipsum dolor sit amet.</p>
+        <div class="col-sm-12">
+            <div class="row my-5 mx-3">
+                <!--Image part-->
+                <div class="col-8">
+                    <div class="col-12">
+                        <div class="card mx-auto col-12 py-5 px-5 shadow" style="border-radius: 20px;">
+                            <img src="{{ books.image.url }}" class="card-img-top" style="max-width: 33rem; border-radius: 20px;" alt="">
+                        </div>
+                        <div class="card-body my-4">
+                            <ul class="list-group list-group-flush col-12 shadow" style="border-radius: 20px;">
+                                <li class="list-group-item">
+                                    <h4 class="card-title">{{ books.book_title_eng }} (EN)</h4>
+                                </li>
+                                <li class="list-group-item">
+                                    <h4 class="card-title">{{ books.book_title_jp }} (Romaji)</h4>
+                                </li>
+                                <li class="list-group-item">
+                                    <h4 class="card-title">เล่ม {{ books.volume_no }}</h4>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!--detail part-->
+                <div class="col-4">
+                    <div class="col-12 card-body my-1">
+                        <ul class="list-group list-group-flush col-12 shadow" style="border-radius: 20px;">
+                            <li class="list-group-item card-header">
+                                <h4 class="card-title text-center">รายละเอียด</h4>
+                            </li>
+                            <li class="list-group-item">
+                                <h5 class="card-title">ผู้แต่ง: {{ books.contributor }}</h5>
+                            </li>
+                            <li class="list-group-item">
+                                <h5 class="card-title">ภาพประกอบโดย: {{ books.contributor }}</h5>
+                            </li>
+                            <li class="list-group-item">
+                                <h5 class="card-title">สำนักพิมพ์: {{ books.publisher }}</h5>
+                            </li>
+                            <li class="list-group-item">
+                                <h5 class="card-title">ISBN: {{ books.isbn }}</h5>
+                            </li>
+                            <li class="list-group-item">
+                                <h5 class="card-title">ปี: {{ books.year }}</h5>
+                            </li>
+                            <li class="list-group-item">
+                                <h5 class="card-title">จำนวนหน้า: {{ books.pages }}</h5>
+                            </li>
+                            <li class="list-group-item">
+                                <h5 class="card-title">สถานะ: {{ books.stock_status_now }}</h5>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!--Tag หมวดหมู่-->
+                    <div class="col-12 card-body my-1">
+                        <ul class="list-group list-group-flush col-12 shadow" style="border-radius: 20px;">
+                            <li class="list-group-item card-header mx-auto">
+                                <h4 class="card-title text-center">หมวดหมู่</h4>
+                            </li>
+                            <li class="list-group-item mx-auto">
+                                <button type="button" class="btn btn-secondary shadow" style="border-radius: 10px;">{{ books.book_categories.book_category_tag_1st }}</button>
+                            </li>
+                            <li class="list-group-item mx-auto">
+                                <button type="button" class="btn btn-secondary shadow" style="border-radius: 10px;">{{ books.book_categories.book_category_tag_2st }}</button>
+                            </li>
+                            <li class="list-group-item mx-auto">
+                                <button type="button" class="btn btn-secondary shadow" style="border-radius: 10px;">{{ books.book_categories.book_category_tag_3st }}</button>
+                            </li>
+                            <li class="list-group-item mx-auto">
+                                <button type="button" class="btn btn-secondary shadow" style="border-radius: 10px;">{{ books.book_categories.book_category_tag_4st }}</button>
+                            </li>
+                            <li class="list-group-item mx-auto">
+                                <button type="button" class="btn btn-secondary shadow" style="border-radius: 10px;">{{ books.book_categories.book_category_tag_5st }}</button>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="card-body my-1">
+                        <div class="row">
+                            <div class="col-12 py-3 shadow" style="border-radius: 20px;">
+                                <div class="col-12">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">
+                                            <h5 class="card-title text-center">ราคา {{ books.premium_price }} บาท</h5>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <h5 class="card-title text-center text-danger">
+                                                <del>ราคา {{ books.normal_price }} บาท</del>
+                                            </h5>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <button class="btn mt-3 col-12 btn-outline-success shadow" style="border-radius: 10px;">
+                                    Buy
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
+                                        <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"/>
+                                    </svg>
+                                </button>
+                                <button class="btn mt-3 col-12 btn-outline-success shadow" style="border-radius: 10px;">
+                                    Add to cart
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus" viewBox="0 0 16 16">
+                                        <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z"/>
+                                        <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>

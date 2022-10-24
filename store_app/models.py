@@ -157,6 +157,7 @@ class Book(models.Model):
                         null=True, blank=True)
     book_language = models.ForeignKey(BookLanguage, on_delete=models.CASCADE,
         help_text="The book(lightnovel)'s language", null=True, blank=True)
+    book_description = models.TextField(help_text="The description that describe the book.", null=True, blank=True)
 
     class meta:
         verbose_name_plural = 'Books'
