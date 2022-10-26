@@ -1,10 +1,37 @@
 {% extends "central_core/base.html" %}
 {% load static %}
 
+<head>
+    <link rel="stylesheet" href="{% static 'store_app/bootstrap-5.0.2-dist/css/bootstrap.min.css' %}">
+    <script src="{% static 'store_app/bootstrap-5.0.2-dist/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'store_app/bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'store_app/bootstrap-5.0.2-dist/js/bootstrap.js' %}"></script>
+
+</head>
 
 {% block title %} About us {% endblock title %}
 
 
 {% block content %}
-
+<div class="container m-4">
+    <button class="btn btn-primary" data-bs-target="#show" data-bs-toggle="modal">register</button>
+    <div class="modal fade" id="show">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        Register-form
+                    </h5>
+                    <div class="modal-body">
+                        <p>Lorem ipsum dolor sit amet consectetur.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-succsess">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock content %}
+

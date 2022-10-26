@@ -1,25 +1,10 @@
 from django.shortcuts import render, get_object_or_404
-from store_app.models import Book, Publisher, BookCategory
-
-
-
-def publishers(request):
-    """The function for retrieve the Publisher model for all the templates."""
-    return {
-        'publishers': Publisher.objects.all()
-    }
-
-
-def books(request):
-    """The function for retrieve the Book model for all the templates."""
-    return {
-        'books': Book.objects.all()
-    }
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from store_app.models import Book
 
 
 def homepage(request):
     books = Book.objects.all()
-
     # For new books and top hit books.
     new_books = [books[6], books[7], books[8], books[9]]
     top_hit_books = [books[0], books[1], books[2]]
@@ -27,7 +12,13 @@ def homepage(request):
 
 
 def books_list(request):
-    return render(request, 'store_app/books_list.html')
+    books = Book.objects.all()
+
+    paginator = Paginator(books, 12)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    
+    return render(request, 'store_app/books_list.html', {'page_obj': page_obj})
 
 
 def book_detail(request, slug):

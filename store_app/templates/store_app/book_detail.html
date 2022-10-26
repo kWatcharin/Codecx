@@ -14,7 +14,7 @@
                 <div class="col-8">
                     <div class="col-12">
                         <div class="card mx-auto col-12 py-5 px-5 shadow" style="border-radius: 20px;">
-                            <img src="{{ books.image.url }}" class="card-img-top" style="max-width: 33rem; border-radius: 20px;" alt="">
+                            <img src="{{ books.image.url }}" class="card-img-top mx-auto" style="max-width: 33rem; border-radius: 20px;" alt="">
                         </div>
                         <div class="card-body my-4">
                             <ul class="list-group list-group-flush col-12 shadow" style="border-radius: 20px;">
@@ -43,7 +43,7 @@
                                 <h5 class="card-title">ผู้แต่ง: {{ books.contributor }}</h5>
                             </li>
                             <li class="list-group-item">
-                                <h5 class="card-title">ภาพประกอบโดย: {{ books.contributor }}</h5>
+                                <h5 class="card-title">ภาพประกอบโดย: {{ books.artist }}</h5>
                             </li>
                             <li class="list-group-item">
                                 <h5 class="card-title">สำนักพิมพ์: {{ books.publisher }}</h5>
@@ -70,19 +70,19 @@
                                 <h4 class="card-title text-center">หมวดหมู่</h4>
                             </li>
                             <li class="list-group-item mx-auto">
-                                <button type="button" class="btn btn-secondary shadow" style="border-radius: 10px;">{{ books.book_categories.book_category_tag_1st }}</button>
+                                <button type="button" class="btn btn-outline-secondary shadow" style="border-radius: 10px;">{{ books.book_categories.book_category_tag_1st }}</button>
                             </li>
                             <li class="list-group-item mx-auto">
-                                <button type="button" class="btn btn-secondary shadow" style="border-radius: 10px;">{{ books.book_categories.book_category_tag_2st }}</button>
+                                <button type="button" class="btn btn-outline-secondary shadow" style="border-radius: 10px;">{{ books.book_categories.book_category_tag_2st }}</button>
                             </li>
                             <li class="list-group-item mx-auto">
-                                <button type="button" class="btn btn-secondary shadow" style="border-radius: 10px;">{{ books.book_categories.book_category_tag_3st }}</button>
+                                <button type="button" class="btn btn-outline-secondary shadow" style="border-radius: 10px;">{{ books.book_categories.book_category_tag_3st }}</button>
                             </li>
                             <li class="list-group-item mx-auto">
-                                <button type="button" class="btn btn-secondary shadow" style="border-radius: 10px;">{{ books.book_categories.book_category_tag_4st }}</button>
+                                <button type="button" class="btn btn-outline-secondary shadow" style="border-radius: 10px;">{{ books.book_categories.book_category_tag_4st }}</button>
                             </li>
                             <li class="list-group-item mx-auto">
-                                <button type="button" class="btn btn-secondary shadow" style="border-radius: 10px;">{{ books.book_categories.book_category_tag_5st }}</button>
+                                <button type="button" class="btn btn-outline-secondary shadow" style="border-radius: 10px;">{{ books.book_categories.book_category_tag_5st }}</button>
                             </li>
                         </ul>
                     </div>
@@ -108,7 +108,7 @@
                                         <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"/>
                                     </svg>
                                 </button>
-                                <button class="btn mt-3 col-12 btn-outline-success shadow" style="border-radius: 10px;">
+                                <button class="btn mt-3 col-12 btn-outline-primary shadow" style="border-radius: 10px;">
                                     Add to cart
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus" viewBox="0 0 16 16">
                                         <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z"/>

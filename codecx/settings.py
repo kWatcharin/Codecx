@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'reviews_app',
     'general_app',
     'store_app',
+    'cart_app',
 ]
 
 MIDDLEWARE = [
@@ -66,8 +67,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'store_app.views.publishers',
-                'store_app.views.books',
+                'store_app.context_processors.publishers',
+                'store_app.context_processors.books',
             ],
         },
     },
