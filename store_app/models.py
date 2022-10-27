@@ -161,7 +161,7 @@ class Book(models.Model):
 
     class meta:
         verbose_name_plural = 'Books'
-        ordering = ['-datetime_stock']
+        ordering = ['-id']
 
     def get_absolute_url(self):
         return reverse('book_detail', kwargs=[str(self.slug)])

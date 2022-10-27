@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.views.generic import ListView
 from store_app.models import Book
 
 
@@ -12,13 +13,24 @@ def homepage(request):
 
 
 def books_list(request):
-    books = Book.objects.all()
+    novels_list = Book.objects.all().order_by('-id')
+    all_novels = Book.objects.count()
 
-    paginator = Paginator(books, 12)
-    page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)
-    
-    return render(request, 'store_app/books_list.html', {'page_obj': page_obj})
+    paginator = Paginator(novels_list, 9)
+    page = request.GET.get('page', 1)
+    try:
+        novels = paginator.page(page)
+    except PageNotAnInteger:
+        novels = paginator.page(1)
+    except EmptyPage:
+        novels = paginator.page(paginator.num_pages)
+
+    context = {
+        'all_novels': all_novels,
+        'novels': novels
+        }
+
+    return render(request, 'store_app/books_list.html', context)
 
 
 def book_detail(request, slug):
@@ -26,8 +38,10 @@ def book_detail(request, slug):
     return render(request, 'store_app/book_detail.html', {'books': books})
 
 
-
-
-
-
+class BookListView(ListView):
+    model = Book
+    template_name = 'store_app/novels_list.html'
+    context_object_name = 'novels'
+    paginate_by = 9
+    queryset = Book.objects.all().order_by('id')
 

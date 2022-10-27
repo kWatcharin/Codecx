@@ -9,4 +9,6 @@ urlpatterns = [
     path('', views.homepage, name='homepage'),
     path('books/', views.books_list, name='books_list'),
     path('book/<slug:slug>/', views.book_detail, name='book_detail'),
+    path("novels/", views.BookListView.as_view(), name='novels_list'),
 ]
+    
