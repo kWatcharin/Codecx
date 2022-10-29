@@ -175,8 +175,11 @@ class Book(models.Model):
         {self.volume_no},
         {self.book_categories}
         """
-    
 
+class BookSeriesGroup(models.Model):
+    """The model for the group of book that have many books."""
+
+    pass
 
 
         

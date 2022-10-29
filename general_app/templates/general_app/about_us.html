@@ -1,32 +1,41 @@
 {% extends "central_core/base.html" %}
 {% load static %}
-
-<head>
-    <link rel="stylesheet" href="{% static 'store_app/bootstrap-5.0.2-dist/css/bootstrap.min.css' %}">
-    <script src="{% static 'store_app/bootstrap-5.0.2-dist/js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'store_app/bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js' %}"></script>
-    <script src="{% static 'store_app/bootstrap-5.0.2-dist/js/bootstrap.js' %}"></script>
-
-</head>
+{% load crispy_forms_tags %}
 
 {% block title %} About us {% endblock title %}
 
 
 {% block content %}
-<div class="container m-4">
-    <button class="btn btn-primary" data-bs-target="#show" data-bs-toggle="modal">register</button>
-    <div class="modal fade" id="show">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">
-                        Register-form
-                    </h5>
-                    <div class="modal-body">
-                        <p>Lorem ipsum dolor sit amet consectetur.</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button class="btn btn-succsess">Save</button>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-10 offset-1 card shadow" style="border-radius: 20px;">
+            <div class="card-title">
+                <h3 class="text-center pt-3">
+                    About us
+                </h3>
+            </div>
+            <div class="card-body">
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ratione cumque illo doloremque? Dolores facilis aperiam assumenda consequatur unde minus suscipit magnam autem ipsam deserunt, adipisci distinctio repudiandae accusamus, nihil rem! Distinctio expedita reprehenderit, repellendus quam consectetur placeat eos iste velit dolore quidem reiciendis accusantium porro autem minima sapiente optio, quasi, fugit tempora? Adipisci itaque modi unde assumenda soluta ut aperiam odio, ea provident obcaecati exercitationem veritatis natus quas excepturi, earum consequuntur, distinctio molestias consequatur quisquam quis non quidem suscipit facere! Fugit recusandae doloremque, vel minus doloribus fuga explicabo maiores nobis voluptate porro vitae praesentium necessitatibus harum libero eum sapiente temporibus.</p>
+            </div>
+        </div>
+    </div>
+    <div class="row my-5">
+        <div class="col-lg-10 offset-1 card shadow" style="border-radius: 20px;">
+            <div class="card-title pt-3">
+                <h3 class="text-center">ติดต่อสอบถาม/Contact</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-10 offset-lg-1">
+                        <form action="" method="POST" novalidate>
+                            {% csrf_token %}
+                            {{ form|crispy }}
+                            <div class="row">
+                                <div class="col-12">
+                                    <button type="submit" class="col-4 my-3 offset-4 btn btn-outline-primary shadow">Send</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

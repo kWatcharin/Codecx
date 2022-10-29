@@ -25,9 +25,10 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('store_app.urls', namespace='store_app')),
+    path('', include('store_app.urls', namespace='store_app')), 
     path('', include('general_app.urls', namespace='general_app')),
     path('', include('cart_app.urls', namespace='cart_app')),
+    path('', include('user_app.urls', namespace='user_app')),
 ]
 
 # For uitilize the media files.

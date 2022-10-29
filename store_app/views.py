@@ -16,7 +16,7 @@ def books_list(request):
     novels_list = Book.objects.all().order_by('-id')
     all_novels = Book.objects.count()
 
-    paginator = Paginator(novels_list, 9)
+    paginator = Paginator(novels_list, 12)
     page = request.GET.get('page', 1)
     try:
         novels = paginator.page(page)
@@ -37,11 +37,4 @@ def book_detail(request, slug):
     books = get_object_or_404(Book, slug=slug)
     return render(request, 'store_app/book_detail.html', {'books': books})
 
-
-class BookListView(ListView):
-    model = Book
-    template_name = 'store_app/novels_list.html'
-    context_object_name = 'novels'
-    paginate_by = 9
-    queryset = Book.objects.all().order_by('id')
 
