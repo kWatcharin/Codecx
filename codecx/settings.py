@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'general_app',
     'store_app',
     'cart_app',
+    'accounts_app',
     'user_app',
 ]
 
@@ -71,8 +72,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'store_app.context_processors.publishers',
-                'store_app.context_processors.books',
+                'store_app.context_processors.publishers', # Querying the models for retrieving them all templates.
+                'store_app.context_processors.books', # Querying the models for retrieving it them templates.
+                'cart_app.context_processors.cart', # Querying the models for retrieving it them templates.
             ],
         },
     },
@@ -143,3 +145,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+AUTH_USER_MODEL = 'accounts_app.UserAccount'
