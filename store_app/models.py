@@ -1,6 +1,13 @@
 from django.db import models
 from django.urls import reverse
 
+
+class BookManager(models.Manager):
+
+    def get_queryset(self):
+        return super(BookManager, self).get_queryset().filter(is_active=True)
+
+
 class Publisher(models.Model):
     """The model for the publisher that published the book(lightnovel)."""
 
@@ -12,7 +19,7 @@ class Publisher(models.Model):
         null=True, blank=True)
 
     class meta:
-        verbose_name_plural = 'Products'
+        verbose_name_plural = 'Publishers'
 
     def __str__(self):
         return f"{self.publisher_title}"
@@ -65,16 +72,16 @@ class BookCategory(models.Model):
     """The model for the book's category."""
 
     book_category_choices = [('N/A', 'n/a'),
-        ('ACTION', 'Action'), ('DRAMA', 'Drama'), ('ADVENTURE', 'Adventure'), 
-        ('COMEDY', 'Comedy'), ('DRAMA', 'Drama'), ('ECCHI', 'Ecchi'), 
-        ('FANTASY', 'Fantasy'), ('GENDER BENDER', 'Gender Bender'), ('HAREM', 'Harem'), 
-        ('HISTORICAL', 'Historical'), ('HORROR', 'Horror'), ('JOSEI', 'Josei'), 
-        ('MATURE', 'Mature'), ('MACHANICAL', 'Mechanical'), ('MYSTERY', 'Mystery'), 
-        ('PSYCHOLOGICAL', 'Psychological'), ('ROMANCE', 'Romance'), ('SCHOOL LIFE', 'School Life'), 
-        ('SCI-FI', 'Sci-Fi'), ('SEINEN', 'Seinen'), ('SHOJOU', 'Shojou'), 
-        ('Shonen', 'Shonen'), ('SHOJOU AI', 'Shojou Ai'), ('SLICE OF LIFE', 'Slice of Life'), 
-        ('SPORT', 'Sport'), ('TRAGEDY', 'Tragedy'), ('YAOI', 'Yaoi'), ('YURI', 'Yuri'), 
-        ('ISEKAI', 'Isekai'), ('MAGICAL', 'Magical'),
+        ('Action', 'Action'), ('Drama', 'Drama'), ('Adventure', 'Adventure'), 
+        ('Comedy', 'Comedy'), ('Magical', 'Magical'), ('Ecchi', 'Ecchi'), 
+        ('Fantasy', 'Fantasy'), ('Gender Bender', 'Gender Bender'), ('Harem', 'Harem'), 
+        ('Historical', 'Historical'), ('Horror', 'Horror'), ('Josei', 'Josei'), 
+        ('Mature', 'Mature'), ('Mechanical', 'Mechanical'), ('Mystery', 'Mystery'), 
+        ('Psychological', 'Psychological'), ('Romance', 'Romance'), ('School Life', 'School Life'), 
+        ('Sci-fi', 'Sci-Fi'), ('Seinen', 'Seinen'), ('Shojou', 'Shojou'), 
+        ('Shonen', 'Shonen'), ('Shoujou Ai', 'Shojou Ai'), ('Slice of Life', 'Slice of Life'), 
+        ('Sport', 'Sport'), ('Tragedy', 'Tragedy'), ('Yaoi', 'Yaoi'), ('Yuri', 'Yuri'), 
+        ('Isekai', 'Isekai'), 
     ]
     
     book_category_tag_label = models.CharField(max_length=200, help_text="The book(lightnovel)'s tage label.",
@@ -82,13 +89,13 @@ class BookCategory(models.Model):
 
     book_category_tag_1st = models.CharField(max_length=25, choices=book_category_choices,
         null=True, blank=True, default='N/A')
-    book_category_tag_2st = models.CharField(max_length=25, choices=book_category_choices,
+    book_category_tag_2nd = models.CharField(max_length=25, choices=book_category_choices,
         null=True, blank=True, default='N/A')
-    book_category_tag_3st = models.CharField(max_length=25, choices=book_category_choices,
+    book_category_tag_3rd = models.CharField(max_length=25, choices=book_category_choices,
         null=True, blank=True, default='N/A')
-    book_category_tag_4st = models.CharField(max_length=25, choices=book_category_choices,
+    book_category_tag_4th = models.CharField(max_length=25, choices=book_category_choices,
         null=True, blank=True, default='N/A')
-    book_category_tag_5st = models.CharField(max_length=25, choices=book_category_choices,
+    book_category_tag_5th = models.CharField(max_length=25, choices=book_category_choices,
         null=True, blank=True, default='N/A')
     
     class meta:
@@ -98,10 +105,10 @@ class BookCategory(models.Model):
         return f"""
             {self.book_category_tag_label},
             {self.book_category_tag_1st},
-            {self.book_category_tag_2st},
-            {self.book_category_tag_3st},
-            {self.book_category_tag_4st},
-            {self.book_category_tag_5st},
+            {self.book_category_tag_2nd},
+            {self.book_category_tag_3rd},
+            {self.book_category_tag_4th},
+            {self.book_category_tag_5th},
             """
 
 
@@ -118,6 +125,7 @@ class StockStatus(models.Model):
 
     def __str__(self):
         return f"{self.stock_status}"
+
 
 class Book(models.Model):
     """The model for the book(lightnovel) details."""
@@ -148,7 +156,9 @@ class Book(models.Model):
     stock_volume = models.IntegerField(help_text="The stock of the (book)lightnovel in the warehouse.",
         null=True, blank=True)
     stock_status_now = models.ForeignKey(StockStatus, help_text="The status of the stock.", on_delete=models.CASCADE)
-    datetime_create = models.DateTimeField()
+    datetime_created = models.DateTimeField(auto_add_now=True)
+    updated = models.DateTimeField(auto_now=True)
+    is_active = models.BooleanField(Default=True)
     premium_price = models.DecimalField(max_digits=6, decimal_places=2, 
                         help_text="The premium price of the (book)lightnovel.", 
                         null=True, blank=True)
@@ -158,6 +168,8 @@ class Book(models.Model):
     book_language = models.ForeignKey(BookLanguage, on_delete=models.CASCADE,
         help_text="The book(lightnovel)'s language", null=True, blank=True)
     book_description = models.TextField(help_text="The description that describe the book.", null=True, blank=True)
+    objects = models.Manager()
+    books = BookManager()
 
     class meta:
         verbose_name_plural = 'Books'
@@ -175,11 +187,6 @@ class Book(models.Model):
         {self.volume_no},
         {self.book_categories}
         """
-
-class BookSeriesGroup(models.Model):
-    """The model for the group of book that have many books."""
-
-    pass
 
 
         

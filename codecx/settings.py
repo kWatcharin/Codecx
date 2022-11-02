@@ -43,8 +43,8 @@ INSTALLED_APPS = [
     'general_app',
     'store_app',
     'cart_app',
-    'accounts_app',
-    'user_app',
+    'account_app',
+    'django_countries',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap'
@@ -131,7 +131,6 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
-
 STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/')
 
@@ -142,8 +141,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'static/')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Media files (Image, PDF files, Uplodoaded files, etc.)
-
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
-AUTH_USER_MODEL = 'accounts_app.UserAccount'
+# Custom User model.
+
+
