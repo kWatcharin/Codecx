@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.db import models
 from django.urls import reverse
 
@@ -129,7 +130,7 @@ class StockStatus(models.Model):
 
 class Book(models.Model):
     """The model for the book(lightnovel) details."""
-
+    created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='books_creator')
     book_title_eng = models.CharField(max_length=200, help_text="The book's name in English.", 
         db_index=True, null=True, blank=True)
     book_title_jp = models.CharField(max_length=200, help_text="The book's name in Japanese(Romaji).",
