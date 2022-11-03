@@ -26,7 +26,7 @@ def books_list(request):
 
     context = {
         'all_novels': all_novels,
-        'novels': novels
+        'novels': novels,
         }
 
     return render(request, 'store_app/books_list.html', context)
