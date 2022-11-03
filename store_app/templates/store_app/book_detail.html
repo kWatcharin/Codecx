@@ -14,7 +14,9 @@
                 <div class="col-8">
                     <div class="col-12">
                         <div class="card mx-auto col-12 py-5 px-5 shadow" style="border-radius: 20px;">
+                            {% if books.image %}
                             <img src="{{ books.image.url }}" class="card-img-top shadow mx-auto" style="max-width: 33rem; border-radius: 20px;" alt="">
+                            {% endif %}
                         </div>
                         <div class="card-body my-4">
                             <ul class="list-group list-group-flush col-12 shadow" style="border-radius: 20px;">
@@ -73,16 +75,16 @@
                                 <button type="button" class="btn btn-outline-secondary shadow" style="border-radius: 10px;">{{ books.book_categories.book_category_tag_1st }}</button>
                             </li>
                             <li class="list-group-item mx-auto">
-                                <button type="button" class="btn btn-outline-secondary shadow" style="border-radius: 10px;">{{ books.book_categories.book_category_tag_2st }}</button>
+                                <button type="button" class="btn btn-outline-secondary shadow" style="border-radius: 10px;">{{ books.book_categories.book_category_tag_2nd }}</button>
                             </li>
                             <li class="list-group-item mx-auto">
-                                <button type="button" class="btn btn-outline-secondary shadow" style="border-radius: 10px;">{{ books.book_categories.book_category_tag_3st }}</button>
+                                <button type="button" class="btn btn-outline-secondary shadow" style="border-radius: 10px;">{{ books.book_categories.book_category_tag_3rd }}</button>
                             </li>
                             <li class="list-group-item mx-auto">
-                                <button type="button" class="btn btn-outline-secondary shadow" style="border-radius: 10px;">{{ books.book_categories.book_category_tag_4st }}</button>
+                                <button type="button" class="btn btn-outline-secondary shadow" style="border-radius: 10px;">{{ books.book_categories.book_category_tag_4th }}</button>
                             </li>
                             <li class="list-group-item mx-auto">
-                                <button type="button" class="btn btn-outline-secondary shadow" style="border-radius: 10px;">{{ books.book_categories.book_category_tag_5st }}</button>
+                                <button type="button" class="btn btn-outline-secondary shadow" style="border-radius: 10px;">{{ books.book_categories.book_category_tag_5th }}</button>
                             </li>
                         </ul>
                     </div>

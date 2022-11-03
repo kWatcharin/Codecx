@@ -148,7 +148,7 @@ class Book(models.Model):
     book_categories = models.ForeignKey(BookCategory, on_delete=models.CASCADE,
         null=True, blank=True)
     slug = models.SlugField(max_length=255, unique=True, null=True, blank=True)
-    pages = models.CharField(max_length=4, help_text="The book(lightnovel)'s page.",
+    pages = models.CharField(max_length=4, help_text="Theq book(lightnovel)'s page.",
         null=True, blank=True)
     image = models.ImageField('/store_app/image', help_text="For the book(lightnovel)'s image.",
         null=True, blank=True)
@@ -157,9 +157,9 @@ class Book(models.Model):
     stock_volume = models.IntegerField(help_text="The stock of the (book)lightnovel in the warehouse.",
         null=True, blank=True)
     stock_status_now = models.ForeignKey(StockStatus, help_text="The status of the stock.", on_delete=models.CASCADE)
-    datetime_created = models.DateTimeField(auto_add_now=True)
+    datetime_created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
-    is_active = models.BooleanField(Default=True)
+    is_active = models.BooleanField(default=True)
     premium_price = models.DecimalField(max_digits=6, decimal_places=2, 
                         help_text="The premium price of the (book)lightnovel.", 
                         null=True, blank=True)
@@ -177,7 +177,7 @@ class Book(models.Model):
         ordering = ['-id']
 
     def get_absolute_url(self):
-        return reverse('book_detail', kwargs=[str(self.slug)])
+        return reverse('store_app:book_detail', kwargs=[str(self.slug)])
 
     def __str__(self):
         return f"""

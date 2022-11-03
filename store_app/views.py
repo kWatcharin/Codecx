@@ -7,9 +7,8 @@ from store_app.models import Book
 def homepage(request):
     books = Book.objects.all()
     # For new books and top hit books.
-    new_books = [books[6], books[7], books[8], books[9]]
-    top_hit_books = [books[0], books[1], books[2]]
-    return render(request, 'store_app/homepage.html', {'new_books': new_books, 'top_hit_books': top_hit_books})
+    
+    return render(request, 'store_app/homepage.html')
 
 
 def books_list(request):

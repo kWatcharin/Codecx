@@ -89,7 +89,7 @@ WSGI_APPLICATION = 'codecx.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'django_codecx',
+        'NAME': 'codecx_db',
         'USER': 'root',
         'PASSWORD': 'twktsubaki280537',
         'HOST': '127.0.0.1',
@@ -145,5 +145,5 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 # Custom User model.
-AUTH_USER_MODEL = 'UserAccount'
+AUTH_USER_MODEL = 'account_app.UserAccount'
 
