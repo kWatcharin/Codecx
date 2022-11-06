@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.views.generic import ListView
+
 from store_app.models import Book
 
 
@@ -33,7 +33,7 @@ def books_list(request):
 
 
 def book_detail(request, slug):
-    books = get_object_or_404(Book, slug=slug)
-    return render(request, 'store_app/book_detail.html', {'books': books})
+    book = get_object_or_404(Book, slug=slug)
+    return render(request, 'store_app/book_detail.html', {'book': book})
 
 
