@@ -14,4 +14,10 @@ class Cart():
             cart = self.session['skey'] = {}
         
         self.cart = cart
+
+    def add(self, book):
+        
+        book_id = str(book.id)
+        if book_id in self.cart:
+            self.cart[book_id] = {'price': str(book.premium_price)}
         
