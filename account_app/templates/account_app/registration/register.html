@@ -1,0 +1,100 @@
+{% extends 'central_core/base.html' %}
+{% load static %}
+
+{% block title %} Register {% endblock title %}
+
+
+{% block content %}
+
+<style>
+    .account-form input {
+        border: 2px solid #ccc;
+        height: calc(2em + .75rem + 2px);
+    }
+
+    .account-form input:focus {
+        border-color: #1497ff;
+        box-shadow: none;
+    }
+</style>
+
+<div class="container-fluid">
+    <div class="row no-gutter">
+        <div class="col-md-12">
+            <div class="login d-flex align-items-center py-5">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 col-lg-7 shadow mx-auto" style="border-radius: 20px;">
+                             <form class="account-form p-4 rounded col-lg-10 mx-auto" action="." method="post">
+                                {% csrf_token %}
+                                <h1 class="mb-2 font-weight-bold text-center">CODECX</h1>
+                                <h4 class="mb-2 font-weight-bold text-center">
+                                    Register
+                                </h4>
+                                <p class="mb-4">Create your account.</p>
+
+                                {% if form.errors %}
+                                <p>Please correct the following errors:</p>
+                                {% for field in form %}
+                                {% if field.errors %}
+                                <div class="alert alert-primary" role="alert">
+                                    {{ field.label }}: {{ field.errors|striptags }}
+                                </div>
+                                {% endif %}
+                                {% endfor %}
+                                {% endif %}
+
+                                <label>
+                                    {{ form.user_name.label }}
+                                    <span class="text-muted small">
+                                        (Required)
+                                    </span>
+                                </label>
+                                {{ form.user_name }}
+
+                                <label>
+                                    {{ form.email.label}}
+                                    <span class="text-muted small">
+                                        (Required)
+                                    </span></label>
+                                {{ form.email }}
+
+                                <label>
+                                    {{ form.password.label}}
+                                    <span class="text-muted mb-4">
+                                    </span>
+                                </label>
+                                 <small class="form-text text-muted mb-4 small">
+                                    At least 8 characters and 1 digit
+                                </small>
+                                {{ form.password }}
+
+                                <label>
+                                    {{ form.password2.label}}
+                                    <span class="text-muted small">
+                                        (Required)
+                                    </span>
+                                </label>
+                                {{ form.password2 }}
+
+                                <button class="btn btn-outline-success btn-block py-2 mb-4 mt-5 fw500 w-100 shadow" type="submit" id="" value="">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-file-earmark-check" viewBox="0 0 16 16">
+                                        <path d="M10.854 7.854a.5.5 0 0 0-.708-.708L7.5 9.793 6.354 8.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"/>
+                                        <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z"/>
+                                      </svg>
+                                    Submit your Register
+                                </button>
+
+                                <p class="text-center">
+                                    <a href="{% url 'account_app:login'%}">Already have an account?</a>
+                                </p>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -15,9 +15,13 @@ class Cart():
         
         self.cart = cart
 
+        self.session.modified = True
+
     def add(self, book):
         
         book_id = str(book.id)
         if book_id in self.cart:
             self.cart[book_id] = {'price': str(book.premium_price)}
+
+        self.session.modified = True   
         

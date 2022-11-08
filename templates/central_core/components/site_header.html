@@ -65,10 +65,10 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbar_dropdown">
                         <li class="dropdown-item">
-                            <a href="#" class="text-dark" style="text-decoration:none" style="text-decoration:none">Sign-In</a>
+                            <a href="#" class="text-dark" style="text-decoration:none" style="text-decoration:none">Log-in</a>
                         </li>
                         <li class="dropdown-item">
-                            <a href="#" class="text-dark" style="text-decoration:none" style="text-decoration:none">Sign-Up</a>
+                            <a href="{% url 'account_app:register' %}" class="text-dark" style="text-decoration:none" style="text-decoration:none">Register</a>
                         </li>
                     </ul>
                     </li>
@@ -92,7 +92,7 @@
 
                     <li class="nav-item">
                         <a href="{% url 'general_app:about_us' %}" class="nav-link text-white">
-                            เกี่ยวกับเรา | About us
+                            About us
                         </a>
                     </li>
 
