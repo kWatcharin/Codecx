@@ -1,4 +1,5 @@
 {% load static %}
+
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Mitr:wght@300&family=Righteous&display=swap');
     .container{
@@ -24,11 +25,24 @@
                     All Books
                 </a>
             </div>
+            {% if user.is_authenticated %}
+            <div class="col text-center py-3">
+                <a href="{% url 'account_app:login' %}" class="text-white" style="text-decoration:none">
+                    Dashboard
+                </a>
+            </div>
+            <div class="col text-center py-3">
+                <a href="{% url 'account_app:register' %}" class="text-white" style="text-decoration:none">
+                    Log-out
+                </a>
+            </div>
+            {% else %}
             <div class="col text-center py-3">
                 <a href="{% url 'account_app:login' %}" class="text-white" style="text-decoration:none">
                     Log-in
                 </a>
             </div>
+            {% endif %}
             <div class="col text-center py-3">
                 <a href="{% url 'account_app:register' %}" class="text-white" style="text-decoration:none">
                     Register
