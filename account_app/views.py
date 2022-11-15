@@ -4,11 +4,17 @@ from django.http import HttpResponse
 from django.template.loader import render_to_string
 from django.utils.encoding import force_bytes, force_str
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
+from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
 
+from account_app.models import UserAccount
 from account_app.forms import RegistrationForm
-
 from account_app.tokens import account_activation_token
+
+
+@login_required
+def dashboard(request):
+    return render(request, 'account_app/user/dashboard.html')
 
 
 def account_register(request):
@@ -46,9 +52,24 @@ def account_register(request):
         
     return render(request, 'account_app/registration/register.html', context)
 
-@login_required
-def dashboard(request):
-    return render(request, 'account_app/dashboard.html')
+
+def account_activate(request, uidb64, token):
+
+    try:
+        uid = force_str(urlsafe_base64_decode(uidb64))
+        user = UserAccount.objects.get(pk=uid)
+    except(TypeError, ValueError, OverflowError, user.DoesNotExist):
+        user = None
+    
+    if user is not None and account_activation_token.check_token(user, token):
+        user.is_active = True
+        user.save()
+        login(request, user)
+        return redirect('account_app:dashboard')
+    else:
+        return redirect(request, 'account/registraion/activation_invalid.html')
+
+
 
 
 
