@@ -177,7 +177,7 @@ class Book(models.Model):
         ordering = ['-id']
 
     def get_absolute_url(self):
-        return reverse('store_app:book_detail', kwargs=[str(self.slug)])
+        return reverse('store_app:book_detail', args=[self.id, self.slug])
 
     def __str__(self):
         return f"""

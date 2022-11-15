@@ -37,8 +37,11 @@
                                 <p>Please correct the following errors:</p>
                                 {% for field in form %}
                                 {% if field.errors %}
-                                <div class="alert alert-primary" role="alert">
-                                    {{ field.label }}: {{ field.errors|striptags }}
+                                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                    <strong>
+                                        Warning:
+                                    </strong>{{ field.label }}: {{ field.errors|striptags }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                 </div>
                                 {% endif %}
                                 {% endfor %}
