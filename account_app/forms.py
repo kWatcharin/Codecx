@@ -33,7 +33,7 @@ class RegistrationForm(forms.ModelForm):
 
         return user_name
 
-    def clean_password(self):
+    def clean_password2(self):
 
         cd = self.cleaned_data
 
@@ -44,7 +44,7 @@ class RegistrationForm(forms.ModelForm):
 
     def clean_email(self):
 
-        email = self.clean_email['email']
+        email = self.cleaned_data['email']
 
         if UserAccount.objects.filter(email=email).exists():
             raise forms.ValidationError(

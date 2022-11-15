@@ -19,6 +19,9 @@ def dashboard(request):
 
 def account_register(request):
 
+    if request.user.is_authenticated:
+        return('account_app:dashboard')
+
     if request.method == 'POST':
         register_form = RegistrationForm(request.POST)
 
@@ -35,7 +38,7 @@ def account_register(request):
             message = render_to_string(
                 'account_app/registration/account_activation_email.html', {
                     'user': user,
-                    'domain': current_site.domain(),
+                    'domain': current_site.domain,
                     'uid': urlsafe_base64_encode(force_bytes(user.pk)),
                     'token': account_activation_token.make_token(user),
                 })
@@ -46,10 +49,7 @@ def account_register(request):
     else:
         register_form = RegistrationForm()
 
-    context = {
-        'form': register_form
-        }
-        
+    context = {'form': register_form}
     return render(request, 'account_app/registration/register.html', context)
 
 
