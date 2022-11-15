@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from django.template.loader import render_to_string
 from django.utils.encoding import force_bytes, force_str
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
-
+from django.contrib.auth.decorators import login_required
 
 from account_app.forms import RegistrationForm
 
@@ -12,8 +12,6 @@ from account_app.tokens import account_activation_token
 
 
 def account_register(request):
-
-    
 
     if request.method == 'POST':
         register_form = RegistrationForm(request.POST)
@@ -48,13 +46,12 @@ def account_register(request):
         
     return render(request, 'account_app/registration/register.html', context)
 
-
-def user_dashboard(request):
+@login_required
+def dashboard(request):
     return render(request, 'account_app/dashboard.html')
 
 
-def login(reuqest):
-    return render(reuqest, 'account_app/registration/login.html')
+
 
 
 

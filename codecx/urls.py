@@ -27,8 +27,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('store_app.urls', namespace='store_app')), 
     path('', include('general_app.urls', namespace='general_app')),
-    path('', include('cart_app.urls', namespace='cart_app')),
-    path('', include('account_app.urls', namespace='account_app')),
+    path('cart/', include('cart_app.urls', namespace='cart_app')),
+    path('account/', include('account_app.urls', namespace='account_app')),
 ]
 
 # For uitilize the media files.
