@@ -4,13 +4,12 @@
 {% block title %} Book Detail {% endblock title %}
 
 {% block content %}
-
 <div class="container">
     <div class="row">
         <div class="col-sm-12">
             <div class="row my-5 mx-3">
                 <!--Image part-->
-                <div class="col-8">
+                <div class="col-8 mx-auto">
                     <div class="col-12">
                         <div class="card mx-auto col-12 py-5 px-5 shadow" style="border-radius: 20px;">
                             {% if book.image %}
@@ -38,9 +37,9 @@
                 </div>
 
                 <!--detail part-->
-                <div class="col-4">
+                <div class="col-sm-4 col-md-4 col-lg-4 mx-auto">
                     <div class="col-12 card-body my-1">
-                        <ul class="list-group list-group-flush col-12 shadow" style="border-radius: 20px;">
+                        <ul class="list-group list-group-flush col-sm-12 col-md-12 col-lg-12 shadow" style="border-radius: 20px;">
                             <li class="list-group-item card-header">
                                 <h4 class="card-title text-center">Details</h4>
                             </li>
@@ -136,7 +135,6 @@
                                     </ul>
                                 </div>
 
-
                                 <!--Modal Select Button-->
                                 <button id="add_button" class="btn mt-3 col-12 btn-outline-primary shadow" data-bs-toggle="modal" data-bs-target="#exampleModal" style="border-radius: 10px;">
                                     Select
@@ -144,44 +142,44 @@
                                         <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm10.096 8.803a.5.5 0 1 0 .707-.707L6.707 6h2.768a.5.5 0 1 0 0-1H5.5a.5.5 0 0 0-.5.5v3.975a.5.5 0 0 0 1 0V6.707l4.096 4.096z"/>
                                     </svg>
                                 </button>
-                                
                                 {% if user.is_authenticated %}
                                 <!-- Modal Select Window if the user has an authentication -->
                                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title text-start" id="exampleModalLabel">
-                                                    {{ book.book_title_eng }} Vol: {{ book.volume_no }}
-                                                </h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body text-center">
-                                                
-                                                
-                                            </div>
-
-                                            <div class="modal-footer">
-                                                <!--Add to cart button-->
-                                                <button id="add_book" value="{{ book.id }}" type="button" class="btn btn-outline-success shadow">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cart-plus" viewBox="0 0 16 16">
-                                                        <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z"/>
-                                                        <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
-                                                    </svg>
-                                                    Add to cart
-                                                </button>
-
-                                                <!--Close button-->
-                                                <button type="button" class="btn btn-outline-secondary shadow" data-bs-dismiss="modal">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
-                                                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                                                        <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
-                                                    </svg>
-                                                    Close
-                                                </button>
+                                    <!--Add the data of the book to the cart.-->
+                                    <form action="{% url 'cart_app:cart_add' book.id %}">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title text-start" id="exampleModalLabel">
+                                                        {{ book.book_title_eng }} Vol: {{ book.volume_no }}
+                                                    </h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body text-center">
+                                                    {% csrf_token %}
+                                                    {{ cart_book_form }}
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <!--Add to cart button-->
+                                                    <button id="add_book" value="{{ book.id }}" type="submit" class="btn btn-outline-success shadow">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cart-plus" viewBox="0 0 16 16">
+                                                            <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z"/>
+                                                            <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                                                        </svg>
+                                                        Add to cart
+                                                    </button>
+                                                    <!--Close button-->
+                                                    <button type="button" class="btn btn-outline-secondary shadow" data-bs-dismiss="modal">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+                                                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                                                        </svg>
+                                                        Close
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </form> 
                                 </div>
                                 {% else %}
                                 <!-- Modal Select Window else the user hasn't an authentication -->
@@ -194,13 +192,11 @@
                                                 </h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
-
                                             <div class="modal-body text-center">
                                                 <h4 class="text-center">
                                                     Please, Login before select the book!!!
                                                 </h4>
                                             </div>
-
                                             <div class="modal-footer">
                                                 <!--Close button-->
                                                 <button type="button" class="btn btn-outline-secondary shadow" data-bs-dismiss="modal">
@@ -233,7 +229,4 @@
         </div>
     </div>
 </div>
-
-
-
 {% endblock content %}

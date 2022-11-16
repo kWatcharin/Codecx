@@ -113,24 +113,21 @@
         </div>
         {% endfor %}
         
-        <!--ตัวแบ่งหน้า-->
+        <!--Paginator-->
         <div class="container-fluid">
             <div class="row">
                 <div class="col my-5">
                     <nav aria-label="Page navigation example">
-                        
                         <div class="row">
                             <div class="col-12">
                                 <nav aria-label="Page navigation example">
-
                                 {% if novels.has_other_pages %}
                                     <ul class="pagination">
                                         {% if novels.has_previous %}
                                             <li class="page-item"><a class="page-link" href="{% url 'store_app:books_list' %}?page={{ novels.previous_page_number }}">Previous</a></li>
                                         {% else %}
-                                            <li class="page-item disbled"><span class="page-link">Previous</span></li>
+                                            <li class="page-item"><span class="page-link disbled">Previous</span></li>
                                         {% endif %}
-
                                         {% for i in novels.paginator.page_range %}
                                             {% if novels.number == i %}
                                                 <li class="page-item active" aria-current="page"><a class="page-link" href="#">{{ i }}</a></li>
@@ -138,25 +135,20 @@
                                                 <li class="page-item"><a class="page-link" href="{% url 'store_app:books_list' %}?page={{ i }}">{{ i }}</a></li>
                                             {% endif %}
                                         {% endfor %}
-
-                                        {% if page_obj.has_next %}
+                                        {% if novels.has_next %}
                                             <li class="page-item"><a class="page-link" href="{% url 'store_app:books_list' %}?page={{ novels.next_page_number }}">Next</a></li>
                                         {% else %}
                                             <li class="page-item"><span class="page-link disbled">Next</span></li>
                                         {% endif %}
                                     </ul>
-                                {% endif %}
-                                
+                                {% endif %}               
                                 </nav>
                             </div>
                         </div>
-
                     </nav>
                 </div>
             </div>
         </div>
-
     </div>
 </div>
-
 {% endblock content %}

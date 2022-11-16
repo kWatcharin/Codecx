@@ -1,9 +1,61 @@
 {% extends 'central_core/base.html' %}
 {% load static %}
 
-{% block title %} รถเข็น | Cart Summary {% endblock title %}
+{% block title %} Cart {% endblock title %}
 
 
 {% block content %}
+<style>
+#cart-table{
+    border-radius: 20px;
+    box-shadow: 2px 2px 8px 4px rgba(0, 0, 0, 0.1);
+}
+th{
+    text-align: center;
+}
+td{
+    text-align: center;
+}
+</style>
 
+
+<div class="container">
+    <div class="row px-2 py-2">
+        <div id="cart-table" class="col-12 mb-4 card mx-auto">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">No.</th>
+                    <th scope="col">Book ID</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Price/Unit</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Remove</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {% for item in cart %}
+                        {% with book=item.book %}
+                            <tr>
+                                <td>1</td>
+                                <td>{{ book.id }}</td>
+                                <td>{{ book.book_title_eng }}</td>
+                                <td>{{ book.premium_price }}</td>
+                                <td>{{ item.quantity }}</td>
+                                <td>{{ item.total_price }}</td>
+                                <td>
+                                    <form action="{% url 'cart_app:cart_add' book.id %}" method="post">
+                                        {% csrf_token %}
+                                        <input class="btn btn-danger" type="submit" value="Remove">
+                                    </form>
+                                </td>
+                            </tr>
+                        {% endwith %}
+                    {% endfor %}
+                </tbody>
+              </table>
+        </div>
+    </div>
+</div>
 {% endblock content %}
