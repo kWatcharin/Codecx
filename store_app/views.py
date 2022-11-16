@@ -2,20 +2,28 @@ from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from store_app.models import Book
+from cart_app.forms import CartAddBookForm
 
 
 def homepage(request):
 
-    books = Book.objects.all()
-
-    # For new books and top hit books.
-    return render(request, 'store_app/homepage.html')
+    new_books = Book.objects.all().filter(is_active=True).order_by('-id')[0:4]
+    top_hit_books = Book.objects.all().filter(is_active=True).order_by('id')[0:3]
+    cart_book_form = CartAddBookForm()
+    
+    context = {
+        'new_books': new_books,
+        'top_hit_books': top_hit_books,
+        'cart_book_form': cart_book_form
+    }
+    return render(request, 'store_app/homepage.html', context)
 
 
 def books_list(request):
 
-    novels_list = Book.objects.all().order_by('-id').filter(is_active=True)
-    all_novels = Book.objects.count()
+    novels_list = Book.objects.all().filter(is_active=True).order_by('-id')
+    all_novels = Book.objects.filter(is_active=True).count()
+    cart_book_form = CartAddBookForm()
 
     paginator = Paginator(novels_list, 12)
     page = request.GET.get('page', 1)
@@ -30,15 +38,20 @@ def books_list(request):
     context = {
         'all_novels': all_novels,
         'novels': novels,
+        'cart_book_form': cart_book_form
         }
     return render(request, 'store_app/books_list.html', context)
 
 
 def book_detail(request, id, slug):
 
-    book = get_object_or_404(Book, id=id, slug=slug)
+    book = get_object_or_404(Book, id=id, slug=slug, is_active=True)
+    cart_book_form = CartAddBookForm()
 
-    conntext = {'book': book}
+    conntext = {
+        'book': book,
+        'cart_book_form': cart_book_form
+        }
     return render(request, 'store_app/book_detail.html', conntext)
 
 

@@ -5,25 +5,6 @@
 
 {% block content %}
 
-<script>
-    $(document).on('click', '#add_book', function () {
-        $.ajax({
-            type: 'POST',
-            url: '{% url "cart_app:cart_add" %}',
-            data: {
-                bookid: $('#add_book').val(),
-                
-                csrfmiddlewaretoken: "{{csrf_token}}",
-                action: 'post'
-            },
-            success: function (json) {
-               
-            },
-            error: function (xhr, errmsg, err) {}
-        });
-    })
-</script>
-
 <div class="container">
     <div class="row">
         <div class="col-sm-12">
@@ -164,7 +145,8 @@
                                     </svg>
                                 </button>
                                 
-                                <!-- Modal Select Window -->
+                                {% if user.is_authenticated %}
+                                <!-- Modal Select Window if the user has an authentication -->
                                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
@@ -174,15 +156,9 @@
                                                 </h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
-
                                             <div class="modal-body text-center">
-                                                <label for="select">Select quantity</label>
-                                                <select id="qty_selected">
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
-                                                    <option value="3">3</option>
-                                                    <option value="4">4</option>
-                                                </select>
+                                                
+                                                
                                             </div>
 
                                             <div class="modal-footer">
@@ -207,7 +183,38 @@
                                         </div>
                                     </div>
                                 </div>
+                                {% else %}
+                                <!-- Modal Select Window else the user hasn't an authentication -->
+                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title text-start" id="exampleModalLabel">
+                                                    {{ book.book_title_eng }} Vol: {{ book.volume_no }}
+                                                </h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
 
+                                            <div class="modal-body text-center">
+                                                <h4 class="text-center">
+                                                    Please, Login before select the book!!!
+                                                </h4>
+                                            </div>
+
+                                            <div class="modal-footer">
+                                                <!--Close button-->
+                                                <button type="button" class="btn btn-outline-secondary shadow" data-bs-dismiss="modal">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+                                                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                                        <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                                                    </svg>
+                                                    Close
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>  
+                                {% endif %}
 
                                 <!--Add to Favorite Button-->
                                 <button id="add_button" class="btn mt-3 col-12 btn-outline-danger shadow" style="border-radius: 10px;">
