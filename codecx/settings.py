@@ -38,16 +38,19 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_countries',
     'crispy_forms',
     'reviews_app',
     'general_app',
     'store_app',
     'cart_app',
-    'account_app',
-    'django_countries',
+    'account_app',  
 ]
 
+
+# Crispy form library.
 CRISPY_TEMPLATE_PACK = 'bootstrap'
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -140,12 +143,21 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'static/')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+
 # Media files (Image, PDF files, Uplodoaded files, etc.)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
-# Custom User model.
+
+# Custom user model.
 AUTH_USER_MODEL = 'account_app.UserAccount'
+
+
+# Redirect page after Login and Logout.
 LOGIN_URL = 'account_app:login'
 LOGIN_REDIRECT_URL ='account_app:dashboard'
 LOGOUT_REDIRECT_URL = 'store_app:homepage'
+
+
+# Cart Session Id.
+CART_SESSION_ID = 'cart'

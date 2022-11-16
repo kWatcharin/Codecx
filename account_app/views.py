@@ -20,7 +20,7 @@ def dashboard(request):
 def account_register(request):
 
     if request.user.is_authenticated:
-        return('account_app:dashboard')
+        return redirect('account_app:dashboard')
 
     if request.method == 'POST':
         register_form = RegistrationForm(request.POST)
