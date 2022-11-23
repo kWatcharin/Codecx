@@ -57,13 +57,17 @@ class RegistrationForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         
         self.fields['user_name'].widget.attrs.update(
-            {'class': 'form-control mb-3', 'placeholder': 'Username'})
+            {'class': 'form-control mb-3', 'placeholder': 'Username'}
+            )
         self.fields['email'].widget.attrs.update(
-            {'class': 'form-control mb-3', 'placeholder': 'E-mail'})
+            {'class': 'form-control mb-3', 'placeholder': 'E-mail'}
+            )
         self.fields['password'].widget.attrs.update(
-            {'class': 'form-control mb-3', 'placeholder': 'Password'})
+            {'class': 'form-control mb-3', 'placeholder': 'Password'}
+            )
         self.fields['password2'].widget.attrs.update(
-            {'class': 'form-control', 'placeholder': 'Repeat Password'})
+            {'class': 'form-control', 'placeholder': 'Repeat Password'}
+            )
 
 
 class UserLoginForm(AuthenticationForm):
@@ -74,5 +78,5 @@ class UserLoginForm(AuthenticationForm):
             'class': 'form-control',
             'placeholder': 'Password',
             'id': 'login-pwd',
-        }
-    ))
+        })
+    )
