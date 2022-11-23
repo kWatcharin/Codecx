@@ -29,6 +29,7 @@ urlpatterns = [
     path('', include('general_app.urls', namespace='general_app')),
     path('cart/', include('cart_app.urls', namespace='cart_app')),
     path('account/', include('account_app.urls', namespace='account_app')),
+    path('apis/', include('apis.urls', namespace='apis')),
 ]
 
 # For uitilize the media files.

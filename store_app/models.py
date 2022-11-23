@@ -132,7 +132,7 @@ class Book(models.Model):
     """The model for the book(lightnovel) details."""
     created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='books_creator')
     book_title_eng = models.CharField(max_length=200, help_text="The book's name in English.", 
-        db_index=True, null=True, blank=True)
+        db_index=True, null=True)
     book_title_jp = models.CharField(max_length=200, help_text="The book's name in Japanese(Romaji).",
         db_index=True, null=True, blank=True)
     contributor = models.ForeignKey(Contributor, on_delete=models.CASCADE,
