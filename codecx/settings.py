@@ -163,3 +163,11 @@ LOGOUT_REDIRECT_URL = 'store_app:homepage'
 
 # Cart Session Id.
 CART_SESSION_ID = 'cart'
+
+
+# Rest Framework Setting.
+# Pagination.
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 9
+}
