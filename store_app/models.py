@@ -157,6 +157,7 @@ class Book(models.Model):
     stock_volume = models.IntegerField(help_text="The stock of the (book)lightnovel in the warehouse.",
         null=True, blank=True)
     stock_status_now = models.ForeignKey(StockStatus, help_text="The status of the stock.", on_delete=models.CASCADE)
+    is_in_stock = models.BooleanField(default=True)
     datetime_created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     is_active = models.BooleanField(default=True)

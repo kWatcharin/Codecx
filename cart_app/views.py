@@ -11,7 +11,13 @@ from store_app.models import Book
 def cart_summary(request):
     """Display the book that was chosen by the user."""
     cart = Cart(request)
-
+    for item in cart:
+        item['update_quantity'] = CartAddBookForm(
+            initial={
+                'quantity': item['quantity'],
+                'override': True
+            }
+        )
     context = {
         'cart': cart
     }

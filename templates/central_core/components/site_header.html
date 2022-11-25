@@ -20,6 +20,10 @@
         font-family:  'Mitr', sans-serif;
         background: linear-gradient(90deg, #00FFD1, #D58BDD);
     }
+
+    #shopping-cart-button{
+        border-radius: 10px;
+    }
 </style>
 
 <header>
@@ -117,7 +121,7 @@
                     
                     {% if user.is_authenticated %}
                     <li class="nav-item ms-3">
-                        <a type="button" href="{% url 'cart_app:cart_summary' %}" class="nav-link text-white btn btn-outline-info">
+                        <a id="shopping-cart-button" type="button" href="{% url 'cart_app:cart_summary' %}" class="nav-link text-white btn btn-outline-info">
                             <div class="d-inline-flex">
                                 Books: {{ total_books_qty }}
                             </div>

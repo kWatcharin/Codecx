@@ -6,56 +6,166 @@
 
 {% block content %}
 <style>
-#cart-table{
-    border-radius: 20px;
-    box-shadow: 2px 2px 8px 4px rgba(0, 0, 0, 0.1);
-}
-th{
-    text-align: center;
-}
-td{
-    text-align: center;
-}
+    #shopping-cart-title{
+        font-size: 25px;
+        border-radius: 20px;
+    }
+
+    #cart-table{
+        border-radius: 20px;
+        box-shadow: 2px 2px 8px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    th{
+        text-align: center;
+    }
+
+    td{
+        text-align: center;
+    }
+
+    #book_img_cart{
+        width: 125px;
+        height: 175px;
+        border-radius: 15px;
+        box-shadow: 2px 2px 8px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    #remove_button{
+        border-radius: 10px;
+    }
 </style>
 
 
 <div class="container">
+    <div class="row">
+        <div id="shopping-cart-title" class="col-sm-md-lg-12 alert alert-light text-center shadow">
+             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+                 <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+             </svg>
+             <strong>
+                {{ user }}'s Shopping Cart List. 
+             </strong>
+             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+                 <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+             </svg>
+        </div>
+     </div>
+</div>
+
+<!--Cart table list-->
+<div class="container">
     <div class="row px-2 py-2">
         <div id="cart-table" class="col-12 mb-4 card mx-auto">
-            <table class="table">
-                <thead>
-                  <tr>
-                    <th scope="col">No.</th>
-                    <th scope="col">Book ID</th>
-                    <th scope="col">Title</th>
-                    <th scope="col">Price/Unit</th>
-                    <th scope="col">Quantity</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Remove</th>
-                  </tr>
-                </thead>
-                <tbody>
-                    {% for item in cart %}
-                        {% with book=item.book %}
-                            <tr>
-                                <td>{{ forloop.counter }}</td>
-                                <td>{{ book.id }}</td>
-                                <td>{{ book.book_title_eng }}</td>
-                                <td>{{ book.premium_price }}</td>
-                                <td>{{ item.quantity }}</td>
-                                <td>{{ item.total_price }}</td>
-                                <td>
-                                    <form action="{% url 'cart_app:cart_remove' book.id %}" method="post">
-                                        {% csrf_token %}
-                                        <input class="btn btn-danger" type="submit" value="Remove">
-                                    </form>
-                                </td>
-                            </tr>
-                        {% endwith %}
-                    {% endfor %}
-                </tbody>
-              </table>
+            <div class="row">
+                <div class="col-12">
+                    <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">No.</th>
+                            <th scope="col">ID</th>
+                            <th scope="col">Image</th>
+                            <th scope="col">Title (EN and JP)</th>
+                            <th scope="col">Price/Unit</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Remove</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in cart %}
+                                {% with book=item.book %}
+                                    <tr>
+                                        <td>{{ forloop.counter }}</td>
+                                        <td>
+                                            <strong>
+                                                {{ book.id }}
+                                            </strong>
+                                        </td>
+                                        <td class="py-3">
+                                            <a href="{{ book.get_absolute_url }}">
+                                                <img id="book_img_cart" src="{{ book.image.url }}" alt="Lighnovel Image">
+                                            </a>
+                                        </td>
+                                        <td class="text-start">
+                                            <div class="container">
+                                                <div class="row">
+                                                    <strong class="col-12 py-2">
+                                                        EN: {{ book.book_title_eng }}
+                                                    </strong>
+                                                    <br>
+                                                    <strong class="col-12 py-2">
+                                                        Romaji: {{ book.book_title_jp }}
+                                                    </strong>
+                                                    <strong class="col-12 py-2">
+                                                        Volume: {{ book.volume_no }}
+                                                    </strong>
+                                                    <strong class="col-12 py-2">
+                                                        Author: {{ book.contributor }}, Artist: {{ book.artist }}
+                                                    </strong>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="py-5">
+                                            <strong class="text-info">
+                                                {{ book.premium_price }}
+                                            </strong>
+                                        </td>
+                                        <td class="py-5">
+                                            <strong class="text-success">
+                                                {{ item.quantity }}
+                                            </strong>
+                                        </td>
+                                        <td class="py-5">
+                                            <strong class="text-danger">
+                                                {{ item.total_price }}
+                                            </strong>
+                                        </td>
+                                        <td>
+                                            <form class="py-4" action="{% url 'cart_app:cart_remove' book.id %}" method="post">
+                                                {% csrf_token %}
+                                                <input id="remove_button" class="btn btn-outline-danger shadow" type="submit" value="Remove">
+                                            </form>
+                                        </td>
+                                    </tr>
+                                {% endwith %}
+                            {% endfor %}
+                        </tbody>
+                      </table>
+                </div>
+            </div>
         </div>
     </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div id="shopping-cart-title" class="col-sm-md-lg-12 my-1 alert alert-light text-center shadow">
+            <!--Total item and its price.-->
+            <div class="row justify-content-md-end">
+                <div class="col-sm-6">
+                    <strong>
+                        <small class="text-end">Total in cart: {{ total_books_qty }} books</small>
+                    </strong>
+                </div>
+            </div>
+            <div class="row justify-content-md-end">
+                <div class="col-sm-6">
+                    <strong>
+                        <small class="text-end">Total price: {{ total_books_price }} Baht</small>
+                    </strong>
+                </div>
+            </div>
+            <!--Checkout button-->
+            <div class="row justify-content-md-end">
+                <div class="col-sm-6">
+                    <button class="btn btn-outline-success my-2 shadow">
+                        Checkout
+                    </button>
+                </div>
+            </div>
+            
+        </div>
+     </div>
 </div>
 {% endblock content %}

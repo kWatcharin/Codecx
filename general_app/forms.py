@@ -21,7 +21,7 @@ class ContactMessageForm(forms.ModelForm):
 
     def clean_first_name(self):
 
-        first_name_data = self.cleaned_data['first_name'].title()
+        first_name_data = self.cleaned_data['first_name']
         if not first_name_data:
             raise forms.ValidationError(
                 'Enter your "First name field!"'
@@ -32,7 +32,7 @@ class ContactMessageForm(forms.ModelForm):
 
     def clean_last_name(self):
 
-        last_name_data = self.cleaned_data['last_name'].title()
+        last_name_data = self.cleaned_data['last_name']
         if not last_name_data:
             raise forms.ValidationError(
                 'Enter your "Last name field!"'
@@ -43,7 +43,7 @@ class ContactMessageForm(forms.ModelForm):
 
     def clean_email(self):
 
-        email_data = self.cleaned_data['email'].lower()
+        email_data = self.cleaned_data['email']
         if not email_data:
             raise forms.ValidationError(
                 'Enter your "E-mail field!"'
