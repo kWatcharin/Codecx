@@ -38,14 +38,14 @@ td{
                     {% for item in cart %}
                         {% with book=item.book %}
                             <tr>
-                                <td>1</td>
+                                <td>{{ forloop.counter }}</td>
                                 <td>{{ book.id }}</td>
                                 <td>{{ book.book_title_eng }}</td>
                                 <td>{{ book.premium_price }}</td>
                                 <td>{{ item.quantity }}</td>
                                 <td>{{ item.total_price }}</td>
                                 <td>
-                                    <form action="{% url 'cart_app:cart_add' book.id %}" method="post">
+                                    <form action="{% url 'cart_app:cart_remove' book.id %}" method="post">
                                         {% csrf_token %}
                                         <input class="btn btn-danger" type="submit" value="Remove">
                                     </form>

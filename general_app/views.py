@@ -12,7 +12,6 @@ def about_us(request):
         form = ContactMessageForm(request.POST)
         if form.is_valid():
             form.save() 
-
             return HttpResponseRedirect('contact_sending_status')
         
     context = {

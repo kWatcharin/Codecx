@@ -7,27 +7,35 @@ from store_app.models import Book
 class Cart():
 
     def __init__(self, request):
+        """
+        Initialize the cart.
+        """
 
         self.session = request.session
         cart = self.session.get(settings.CART_SESSION_ID)
 
-        if settings.CART_SESSION_ID not in request.session:
-            cart = request.session[settings.CART_SESSION_ID] = {}
+        if not cart:
+            cart = self.session[settings.CART_SESSION_ID] = {}
 
         self.cart = cart
 
 
-    def add(self, book, quantity, override_quantity=False):
-        """Add a product to the cart or update its quantity."""
+    def add(self, book, quantity=1, override_quantity=False):
+        """
+        Add a product to the cart or update its quantity.
+        """
 
         book_id = str(book.id)
         if book_id not in self.cart:
-            self.cart[book_id] = {'quantity': 0, 'price': book.premium_price}
+            self.cart[book_id] = {
+                'quantity': 0, 
+                'price': str(book.premium_price)
+            }
         
         if override_quantity:
             self.cart[book_id]['quantity'] = quantity
         else:
-            self.cart[book_id['qauntity']] += quantity
+            self.cart[book_id]['quantity'] += quantity
 
         self.save()
 
@@ -35,7 +43,7 @@ class Cart():
     def save(self):
         """Mark the session as "modified" to make sure if gets saved."""
 
-        self.cart.modified = True
+        self.session.modified = True
         
 
     def remove(self, book):

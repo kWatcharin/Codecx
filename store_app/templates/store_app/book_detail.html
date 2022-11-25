@@ -146,7 +146,7 @@
                                 <!-- Modal Select Window if the user has an authentication -->
                                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <!--Add the data of the book to the cart.-->
-                                    <form action="{% url 'cart_app:cart_add' book.id %}">
+                                    <form action="{% url 'cart_app:cart_add' book.id %}" method="post">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">

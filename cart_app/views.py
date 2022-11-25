@@ -10,15 +10,19 @@ from store_app.models import Book
 @login_required
 def cart_summary(request):
     """Display the book that was chosen by the user."""
-    
-    return render(request, 'cart_app/cart_summary.html')
+    cart = Cart(request)
+
+    context = {
+        'cart': cart
+    }
+    return render(request, 'cart_app/cart_summary.html', context)
 
 
 @require_POST
-def cart_add(request, book_id):
+def cart_add(request, id):
 
     cart = Cart(request)
-    book = get_object_or_404(Book, id=book_id)
+    book = get_object_or_404(Book, id=id)
     qty_selection_form = CartAddBookForm(request.POST)
 
     if qty_selection_form.is_valid():
@@ -27,16 +31,14 @@ def cart_add(request, book_id):
         cart.add(
             book=book, quantity=qty_selection_form_cd['quantity'], 
             override_quantity=qty_selection_form_cd['override'])
-
     return redirect('cart_app:cart_summary')
 
 
 @require_POST
-def cart_remove(request, book_id):
+def cart_remove(request, id):
 
     cart = Cart(request)
-    book = get_object_or_404(Book, id=book_id)
+    book = get_object_or_404(Book, id=id)
 
     cart.remove(book)
     return redirect('cart_app:cart_summary')
-      
