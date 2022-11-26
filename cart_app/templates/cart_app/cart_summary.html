@@ -31,8 +31,16 @@
         box-shadow: 2px 2px 8px 4px rgba(0, 0, 0, 0.1);
     }
 
-    #remove_button{
+    #remove-button{
         border-radius: 10px;
+        margin-top: 9px;
+        margin-right: 10px;
+        box-shadow: 2px 2px 8px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    #checkout-button{
+        border-radius: 10px;
+        box-shadow: 2px 2px 8px 4px rgba(0, 0, 0, 0.1);
     }
 </style>
 
@@ -40,15 +48,15 @@
 <div class="container">
     <div class="row">
         <div id="shopping-cart-title" class="col-sm-md-lg-12 alert alert-light text-center shadow">
-             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
-                 <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
-             </svg>
-             <strong>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+            </svg>
+            <strong>
                 {{ user }}'s Shopping Cart List. 
-             </strong>
-             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
-                 <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
-             </svg>
+            </strong>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+            </svg>
         </div>
      </div>
 </div>
@@ -69,7 +77,7 @@
                             <th scope="col">Price/Unit</th>
                             <th scope="col">Quantity</th>
                             <th scope="col">Price</th>
-                            <th scope="col">Remove</th>
+                            <th scope="col"></th>
                           </tr>
                         </thead>
                         <tbody>
@@ -124,11 +132,41 @@
                                         <td>
                                             <form class="py-4" action="{% url 'cart_app:cart_remove' book.id %}" method="post">
                                                 {% csrf_token %}
-                                                <input id="remove_button" class="btn btn-outline-danger shadow" type="submit" value="Remove">
+                                                <button id="remove-button" class="btn btn-outline-secondary" type="submit">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
+                                                        <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"/>
+                                                    </svg>
+                                                </button>
                                             </form>
                                         </td>
                                     </tr>
                                 {% endwith %}
+                            {% empty %}
+                                <tr>
+                                    <td class="py-5 text-center">
+                                        <strong></strong>    
+                                    </td>
+                                    <td class="py-5 text-center">
+                                        <strong></strong>    
+                                    </td>
+                                    <td class="py-5 text-center">
+                                        <strong></strong>    
+                                    </td>
+                                    <td class="py-5 text-center">
+                                        <strong>
+                                            Your shopping cart is empty.
+                                        </strong>
+                                    </td>
+                                    <td class="py-5 text-center">
+                                        <strong></strong>    
+                                    </td>
+                                    <td class="py-5 text-center">
+                                        <strong></strong>    
+                                    </td>
+                                    <td class="py-5 text-center">
+                                        <strong></strong>    
+                                    </td>
+                                </tr>
                             {% endfor %}
                         </tbody>
                       </table>
@@ -138,34 +176,39 @@
     </div>
 </div>
 
+{% if total_books_qty and total_books_price %}
 <div class="container">
     <div class="row">
-        <div id="shopping-cart-title" class="col-sm-md-lg-12 my-1 alert alert-light text-center shadow">
+        <div id="shopping-cart-title" class="col-sm-md-lg-12 my-1 alert alert-light text-center">
             <!--Total item and its price.-->
             <div class="row justify-content-md-end">
                 <div class="col-sm-6">
                     <strong>
-                        <small class="text-end">Total in cart: {{ total_books_qty }} books</small>
+                        <small class="text-success text-end">Total in cart: {{ total_books_qty }} books</small>
                     </strong>
                 </div>
             </div>
             <div class="row justify-content-md-end">
                 <div class="col-sm-6">
                     <strong>
-                        <small class="text-end">Total price: {{ total_books_price }} Baht</small>
+                        <small class="text-danger text-end">Total price: {{ total_books_price }} Baht</small>
                     </strong>
                 </div>
             </div>
             <!--Checkout button-->
             <div class="row justify-content-md-end">
                 <div class="col-sm-6">
-                    <button class="btn btn-outline-success my-2 shadow">
+                    <button id="checkout-button" class="btn btn-warning my-2 text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag-check" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M10.854 8.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
+                            <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"/>
+                        </svg>
                         Checkout
                     </button>
                 </div>
             </div>
-            
         </div>
      </div>
 </div>
+{% endif %}
 {% endblock content %}

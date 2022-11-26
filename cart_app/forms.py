@@ -1,6 +1,5 @@
 from django import forms
 
-
 PRODUCT_QUANTITY_CHOICES = [(i, str(i)) for i in range(1, 5)]
 
 class CartAddBookForm(forms.Form):
@@ -11,3 +10,4 @@ class CartAddBookForm(forms.Form):
     override = forms.BooleanField(required=False, 
         initial=False,
         widget=forms.HiddenInput)
+
