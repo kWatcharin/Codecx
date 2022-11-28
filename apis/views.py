@@ -10,10 +10,10 @@ from apis.serializers import BookSerializer
 
 class BooksListApi(APIView):
     """
-    API endpoint that allow users to be views.
+    API endpoint แสดงผลหน้ารายการหนังสือ
     """
     
-    def get(self, request, format=None, *args, **kwargs):
+    def get(self, request, format=None):
 
         books = Book.objects.all().filter(is_active=True)
         books_serializer = BookSerializer(books, many=True)
@@ -32,7 +32,7 @@ class BooksListApi(APIView):
 
 class BookDetailApi(APIView):
     """
-    API endpoint that allow users to be views.
+    API endpoint แสดงผลหน้าข้อมูล object หนังสือแบบ dynamic จากการรับค่า id ที่ส่งมาจาก url
     """
 
     def get(self, request, id):

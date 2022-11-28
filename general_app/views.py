@@ -21,5 +21,5 @@ def about_us(request):
 
 
 def contact_sending_status(request):
-
+    """หน้าแจ้งเตือน สถานะ ส่งข้อความติดต่อสำเร็จ"""
     return render(request, 'general_app/all_ready_sent_contact.html')

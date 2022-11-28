@@ -1,53 +1,48 @@
 from django.contrib import admin
 
-from store_app.models import Publisher, Contributor, Artist, BookLanguage
-from store_app.models import StockStatus, BookCategory, Book
-
+from store_app.models import (
+    Publisher, Contributor, Artist, BookLanguage, StockStatus, BookCategory, Book
+)
+ 
 
 class PublisherAdmin(admin.ModelAdmin):
-    """A model admin for admin's publisher."""
-
+    """ModelAdmin: สำนักพิมพ์"""
     publisher_admin = (
         'publisher_title',
         'website',
         'email',
     )
-
 admin.site.register(Publisher, PublisherAdmin)
 
 
 class ContrbutorAdmin(admin.ModelAdmin):
-    """A class for admin's contributor."""
-
+    """ModelAdmin: ผู้แต่ง"""
     contributor_admin = (
         'contributor_title',
     )
-
 admin.site.register(Contributor, ContrbutorAdmin)
 
 
 class ArtistAdmin(admin.ModelAdmin):
-    """A class for admin's artist."""
+    """ModelAdmin: อาร์ทติสค์"""
 
     artist_admin = (
         'artist_title',
     )
-
 admin.site.register(Artist, ArtistAdmin)
 
 
 class BookLanguageAdmin(admin.ModelAdmin):
-    """A class for admin's language of book."""
+    """ModelAdmin: ภาษา"""
 
     book_language_admin = (
         'book_language_select',
     )
-
 admin.site.register(BookLanguage, BookLanguageAdmin)
 
 
 class BookCategoryAdmin(admin.ModelAdmin):
-    """A class for admin's category of the book."""
+    """ModelAdmin: ภาษา"""
 
     lightnovel_category_admin = (
         'book_category_tag_label',
@@ -57,22 +52,20 @@ class BookCategoryAdmin(admin.ModelAdmin):
         'book_category_tag_4st',
         'book_category_tag_5st',
         )
-
 admin.site.register(BookCategory, BookCategoryAdmin)
 
 
 class StockStatusAdmin(admin.ModelAdmin):
-    """A class for admin's stock status."""
+    """ModelAdmin: สถานะ Stock"""
 
     stock_status_admin = (
         'stock_status',
     )
-
 admin.site.register(StockStatus, StockStatusAdmin)
 
-class BookAdmin(admin.ModelAdmin):
-    """A class for admin's book(lightnovel)."""
 
+class BookAdmin(admin.ModelAdmin):
+    """ModelAdmin: หนังสือ"""
     book_admin_display_list = (
         'image'
         'book_title_eng', 
@@ -82,5 +75,4 @@ class BookAdmin(admin.ModelAdmin):
         'artist',
         'book_categories'
     )
-
 admin.site.register(Book, BookAdmin)

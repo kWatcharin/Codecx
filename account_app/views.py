@@ -1,11 +1,12 @@
-from django.shortcuts import render, redirect
+from django.contrib.auth import login, logout
+from django.contrib.auth.decorators import login_required
 from django.contrib.sites.shortcuts import get_current_site
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.template.loader import render_to_string
 from django.utils.encoding import force_bytes, force_str
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
-from django.contrib.auth import login, logout
-from django.contrib.auth.decorators import login_required
+
 
 from account_app.models import UserAccount
 from account_app.forms import RegistrationForm

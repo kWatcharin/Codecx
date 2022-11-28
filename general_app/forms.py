@@ -5,7 +5,7 @@ from general_app.models import ContactMessage
 
 
 class ContactMessageForm(forms.ModelForm):
-    """The model of contact message from the contact person in about page."""
+    """ModelForm: ที่ข้อความติดต่อจาก user"""
 
     class Meta:
         model = ContactMessage

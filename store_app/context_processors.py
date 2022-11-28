@@ -1,16 +1,15 @@
-from store_app.models import Book, Publisher, BookCategory
+from store_app.models import Book, Publisher
 
 
-# The functions for retrieving the particular of the database for using all the templates in this project.
 def publishers(request):
-    """The function for retrieve the Publisher model for all the templates."""
+    """ฟังก์ชันสำหรับเรียกใช้งาน แสดงผล objects สำนักพิมพ์ทั้งหมดใน template อื่นๆ"""
     return {
         'publishers': Publisher.objects.all()
     }
 
 
 def books(request):
-    """The function for retrieve the Book model for all the templates."""
+    """ฟังก์ชันสำหรับเรียกใช้งาน แสดงผล objects หนังสือทั้งหมดใน template อื่นๆ"""
     return {
         'books': Book.objects.all()
     }

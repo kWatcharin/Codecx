@@ -9,26 +9,24 @@ def homepage(request):
     """
     Homepage
     """
-    new_books = Book.objects.all().filter(is_active=True).order_by('-id')[0:4]
-    top_hit_books = Book.objects.all().filter(is_active=True).order_by('id')[0:3]
-    cart_book_form = CartAddBookForm()
+    new_books = Book.objects.all().filter(is_active=True).order_by('-id')[0:4] #แสดงผลหนังสือใหม่ 4 เล่มล่าสุด
+    top_hit_books = Book.objects.all().filter(is_active=True).order_by('id')[0:3] #ยกตัวอย่างแสดงผลหนังสือ จำนวน 3 เล่ม
     
     context = {
         'new_books': new_books,
-        'top_hit_books': top_hit_books,
-        'cart_book_form': cart_book_form
+        'top_hit_books': top_hit_books
     }
     return render(request, 'store_app/homepage.html', context)
 
 
 def books_list(request):
     """
-    List of the book that is actived.
+    Books list page.
     """
     is_actived_novels = Book.objects.all().filter(is_active=True).order_by('-id')
     all_novels = Book.objects.filter(is_active=True).count()
-    cart_book_form = CartAddBookForm()
 
+    # แบ่งจำนวนหน้าให้แสดงผล 12 objects ต่อ page
     paginator = Paginator(is_actived_novels, 12)
     page = request.GET.get('page', 1)
     try:
@@ -41,15 +39,15 @@ def books_list(request):
     context = {
         'all_novels': all_novels,
         'novels': novels,
-        'cart_book_form': cart_book_form
         }
     return render(request, 'store_app/books_list.html', context)
 
 
 def book_detail(request, id, slug):
     """
-    Detail page of the book object.
+    Book object's detail page.
     """
+    #รับค่า id, slug ที่ส่งมาจาก url มา query หา object ที่เกี่ยวข้องในโมเดล แล้ว ส่งออกไปแสดงผล ใน template book_detail.html
     book = get_object_or_404(Book, id=id, slug=slug, is_active=True)
     cart_book_form = CartAddBookForm()
 

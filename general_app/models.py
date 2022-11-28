@@ -2,7 +2,7 @@ from django.db import models
 
 
 class ContactMessage(models.Model):
-    """The models of contaction from the contact person."""
+    """Model: รับบันทึกข้อความจาก user ที่ติดต่อเข้ามา"""
 
     first_name = models.CharField(max_length=25, null=True, blank=True)
     last_name = models.CharField(max_length=25, null=True, blank=True)
